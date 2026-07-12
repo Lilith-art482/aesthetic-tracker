@@ -1,6 +1,6 @@
 import { useEffect, useRef, useCallback } from 'react';
 import type { Emotion } from '../types';
-import { playBlinkSound, playEmotionSound } from '../utils/sounds';
+import { playEmotionSound } from '../utils/sounds';
 
 interface RobotAssistantProps {
   emotion: Emotion;
@@ -162,7 +162,6 @@ export default function RobotAssistant({ emotion, onEmotionChange, className }: 
 
   const doBlink = useCallback(() => {
     draw(true);
-    playBlinkSound();
     if (blinkTimeoutRef.current) clearTimeout(blinkTimeoutRef.current);
     blinkTimeoutRef.current = window.setTimeout(() => draw(false), 120);
   }, [draw]);
