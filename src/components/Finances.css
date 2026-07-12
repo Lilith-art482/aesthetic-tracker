@@ -1,0 +1,319 @@
+.finances {
+  padding: 0.5rem;
+}
+
+.finance-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .finance-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.aquarium-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.aquarium {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  max-height: 400px;
+  border-radius: 32px;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(255, 182, 193, 0.15), 0 4px 16px rgba(200, 180, 255, 0.1);
+}
+
+.aquarium-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(181, 234, 215, 0.15), rgba(207, 186, 225, 0.1));
+}
+
+.aquarium-water {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, rgba(181, 234, 215, 0.3), rgba(126, 200, 160, 0.5));
+  border-radius: 0 0 32px 32px;
+}
+
+.aquarium-glass {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.05) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.aquarium-info {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.aqua-amount {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #5a4a6b;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.5);
+}
+
+.aqua-label {
+  font-size: 0.85rem;
+  color: #8a7a9b;
+  font-weight: 500;
+}
+
+.aquarium-bubbles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.stone {
+  position: absolute;
+  bottom: 0;
+  width: 28px;
+  height: 18px;
+  border-radius: 50% 50% 40% 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stone-label {
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: white;
+  opacity: 0;
+}
+
+.stone:hover .stone-label {
+  opacity: 1;
+}
+
+.aquarium-sand {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background: linear-gradient(180deg, rgba(255, 223, 211, 0.3), rgba(255, 223, 211, 0.5));
+  border-radius: 0 0 32px 32px;
+}
+
+.budget-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.budget-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.budget-fill {
+  height: 100%;
+  border-radius: 8px;
+}
+
+.budget-text {
+  font-size: 0.75rem;
+  color: #8a7a9b;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.expenses-section {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(255, 182, 193, 0.15), 0 4px 16px rgba(200, 180, 255, 0.1);
+}
+
+.expenses-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.expenses-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #5a4a6b;
+}
+
+.expense-add-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, #FDE2E4, #CFBAE1);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(207, 186, 225, 0.3);
+}
+
+.expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.expense-input,
+.expense-select {
+  padding: 10px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.3);
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: #5a4a6b;
+  outline: none;
+}
+
+.expense-input:focus,
+.expense-select:focus {
+  border-color: #CFBAE1;
+}
+
+.expense-submit {
+  padding: 10px;
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(135deg, #B5EAD7, #7ec8a0);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.expenses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.expense-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s;
+}
+
+.expense-item:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.expense-cat {
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #5a4a6b;
+}
+
+.expense-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.expense-note {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #5a4a6b;
+}
+
+.expense-date {
+  font-size: 0.7rem;
+  color: #a89bc0;
+}
+
+.expense-amount {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #e88898;
+}
+
+.expense-delete {
+  background: none;
+  border: none;
+  color: #d4b8c8;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s;
+  padding: 4px;
+}
+
+.expense-item:hover .expense-delete {
+  opacity: 1;
+}
+
+.expenses-empty {
+  text-align: center;
+  color: #b8a8c8;
+  font-size: 0.9rem;
+  padding: 2rem 0;
+}

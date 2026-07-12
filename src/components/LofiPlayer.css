@@ -1,0 +1,113 @@
+.lofi-player {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0.75rem 1rem;
+  box-shadow: 0 8px 32px rgba(255, 182, 193, 0.15), 0 4px 16px rgba(200, 180, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.lofi-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.vinyl {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vinyl-hole {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f5e4d8;
+  border: 1px solid #e8d5cc;
+}
+
+.lofi-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.lofi-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #5a4a6b;
+}
+
+.lofi-time {
+  font-size: 0.7rem;
+  color: #a89bc0;
+}
+
+.lofi-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, #FDE2E4, #CFBAE1);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rain-visualizer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.rain-drop {
+  position: absolute;
+  top: -10px;
+  width: 1px;
+  height: 12px;
+  background: #CFBAE1;
+  border-radius: 1px;
+  opacity: 0.3;
+}
+
+.lofi-volume {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  color: #a89bc0;
+}
+
+.volume-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 4px;
+  background: rgba(207, 186, 225, 0.3);
+  outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #CFBAE1;
+  border: 2px solid white;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(207, 186, 225, 0.4);
+}
