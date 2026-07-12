@@ -79,14 +79,16 @@ export default function App() {
     setWaterInterval(minutes);
     setWaterTimer(Date.now());
     setShowWaterAlert(false);
-    setRobotEmotion('neutral');
+    setRobotEmotion('thirsty');
+    setTimeout(() => setRobotEmotion('neutral'), 2000);
   };
 
   const startEyeTimer = (minutes: number) => {
     setEyeInterval(minutes);
     setEyeTimer(Date.now());
     setShowEyeAlert(false);
-    setRobotEmotion('neutral');
+    setRobotEmotion('sleepy');
+    setTimeout(() => setRobotEmotion('neutral'), 2000);
   };
 
   const dismissWater = () => {
@@ -116,7 +118,11 @@ export default function App() {
     <div className="app">
       <AnimatePresence>
         {showTutorial && (
-          <Tutorial onFinish={() => setShowTutorial(false)} />
+          <Tutorial onFinish={() => {
+            setShowTutorial(false);
+            setRobotEmotion('happy');
+            setTimeout(() => setRobotEmotion('neutral'), 3000);
+          }} />
         )}
       </AnimatePresence>
 
@@ -168,9 +174,9 @@ export default function App() {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
               >
-                {activeTab === 'planner' && <Planner />}
-                {activeTab === 'finances' && <Finances />}
-                {activeTab === 'habits' && <Habits />}
+                {activeTab === 'planner' && <Planner onRobotEmotion={setRobotEmotion} />}
+                {activeTab === 'finances' && <Finances onRobotEmotion={setRobotEmotion} />}
+                {activeTab === 'habits' && <Habits onRobotEmotion={setRobotEmotion} />}
               </motion.div>
             </AnimatePresence>
           </div>

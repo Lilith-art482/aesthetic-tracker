@@ -2,9 +2,13 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Wallet, Plus, Trash, CurrencyDollar } from '@phosphor-icons/react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import type { FinanceData } from '../types';
+import type { FinanceData, Emotion } from '../types';
 import { playStoneDropSound } from '../utils/sounds';
 import './Finances.css';
+
+interface FinancesProps {
+  onRobotEmotion?: (emotion: Emotion) => void;
+}
 
 function generateId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
@@ -14,7 +18,7 @@ const categories = [
   'Еда', 'Транспорт', 'Развлечения', 'Покупки', 'Здоровье', 'Другое'
 ];
 
-export default function Finances() {
+export default function Finances({ onRobotEmotion }: FinancesProps) {
   const [data, setData] = useLocalStorage<FinanceData>('finance_data', {
     budget: 30000,
     expenses: []
@@ -44,6 +48,8 @@ export default function Finances() {
     setAmount('');
     setNote('');
     setShowAdd(false);
+    onRobotEmotion?.('sleepy');
+    setTimeout(() => onRobotEmotion?.('neutral'), 2000);
   };
 
   const deleteExpense = (id: string) => {
@@ -51,6 +57,8 @@ export default function Finances() {
       ...prev,
       expenses: prev.expenses.filter(e => e.id !== id)
     }));
+    onRobotEmotion?.('happy');
+    setTimeout(() => onRobotEmotion?.('neutral'), 2000);
   };
 
   const setBudget = () => {
@@ -59,6 +67,8 @@ export default function Finances() {
       const num = parseFloat(val);
       if (!isNaN(num) && num > 0) {
         setData(prev => ({ ...prev, budget: num }));
+        onRobotEmotion?.('inspired');
+        setTimeout(() => onRobotEmotion?.('neutral'), 2500);
       }
     }
   };

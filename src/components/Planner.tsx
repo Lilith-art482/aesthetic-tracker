@@ -1,10 +1,14 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, CalendarBlank, Plus, Trash } from '@phosphor-icons/react';
-import type { Task } from '../types';
+import type { Task, Emotion } from '../types';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { playCompleteSound } from '../utils/sounds';
 import './Planner.css';
+
+interface PlannerProps {
+  onRobotEmotion?: (emotion: Emotion) => void;
+}
 
 function generateId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
@@ -17,7 +21,7 @@ function formatDate(date: Date): string {
 const DAYS = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 const MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 
-export default function Planner() {
+export default function Planner({ onRobotEmotion }: PlannerProps) {
   const [tasks, setTasks] = useLocalStorage<Task[]>('planner_tasks', []);
   const [currentDate, setCurrentDate] = useState(() => new Date());
   const [newTaskText, setNewTaskText] = useState('');
@@ -55,18 +59,26 @@ export default function Planner() {
     };
     setTasks(prev => [...prev, task]);
     setNewTaskText('');
+    onRobotEmotion?.('thinking');
+    setTimeout(() => onRobotEmotion?.('neutral'), 2000);
   };
 
   const toggleTask = (id: string) => {
     setTasks(prev => prev.map(t => {
       if (t.id !== id) return t;
-      if (!t.completed) playCompleteSound();
-      return { ...t, completed: !t.completed };
+      const becomingCompleted = !t.completed;
+      if (becomingCompleted) {
+        playCompleteSound();
+        onRobotEmotion?.('happy');
+        setTimeout(() => onRobotEmotion?.('neutral'), 2500);
+      }
+      return { ...t, completed: becomingCompleted };
     }));
   };
 
   const deleteTask = (id: string) => {
     setTasks(prev => prev.filter(t => t.id !== id));
+    onRobotEmotion?.('neutral');
   };
 
   const prevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
