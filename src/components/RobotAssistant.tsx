@@ -4,7 +4,7 @@ import { playEmotionSound } from '../utils/sounds';
 
 interface RobotAssistantProps {
   emotion: Emotion;
-  onEmotionChange?: (emotion: Emotion) => void;
+  speechText?: string;
   className?: string;
 }
 
@@ -148,7 +148,7 @@ function drawRobotSVG(emotion: Emotion, blink: boolean): string {
   `;
 }
 
-export default function RobotAssistant({ emotion, onEmotionChange, className }: RobotAssistantProps) {
+export default function RobotAssistant({ emotion, speechText, className }: RobotAssistantProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const currentEmotionRef = useRef(emotion);
   const blinkTimeoutRef = useRef<number | undefined>(undefined);
@@ -180,33 +180,17 @@ export default function RobotAssistant({ emotion, onEmotionChange, className }: 
     playEmotionSound();
   }, [emotion, draw]);
 
-  const handleEmotionClick = (e: Emotion) => {
-    if (onEmotionChange) onEmotionChange(e);
-  };
-
-  const emotions: Emotion[] = ['happy', 'sleepy', 'thirsty', 'inspired', 'neutral', 'love', 'thinking'];
-  const labels: Record<Emotion, string> = {
-    happy: '😊', sleepy: '😴', thirsty: '💧', inspired: '✨', neutral: '😐', love: '😍', thinking: '🤖'
-  };
-
   return (
     <div className={`robot-assistant ${className || ''}`}>
       <div className="robot-wrapper">
+        {speechText && (
+          <div className="robot-speech">
+            <span className="speech-text">{speechText}</span>
+          </div>
+        )}
         <div className="robot-card">
           <svg ref={svgRef} className="robot-svg" viewBox="0 0 400 420" />
         </div>
-      </div>
-      <div className="robot-emotions">
-        {emotions.map(em => (
-          <button
-            key={em}
-            className={`robot-btn ${emotion === em ? 'active' : ''}`}
-            onClick={() => handleEmotionClick(em)}
-            title={em}
-          >
-            {labels[em]}
-          </button>
-        ))}
       </div>
     </div>
   );

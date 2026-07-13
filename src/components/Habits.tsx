@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Flower, Plus, Sparkle } from '@phosphor-icons/react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import type { Habit, Emotion } from '../types';
+import type { Habit } from '../types';
 import { playPianoNote } from '../utils/sounds';
 import './Habits.css';
 
 interface HabitsProps {
-  onRobotEmotion?: (emotion: Emotion) => void;
+  onHabitChecked?: () => void;
 }
 
 function generateId() {
@@ -33,7 +33,7 @@ function getStreakFlower(streak: number): string {
   return stages[Math.min(streak, 4)] || '🌺';
 }
 
-export default function Habits({ onRobotEmotion }: HabitsProps) {
+export default function Habits({ onHabitChecked }: HabitsProps) {
   const [habits, setHabits] = useLocalStorage<Habit[]>('habits_data', []);
   const [showAdd, setShowAdd] = useState(false);
   const [newName, setNewName] = useState('');
@@ -55,8 +55,6 @@ export default function Habits({ onRobotEmotion }: HabitsProps) {
     setHabits(prev => [...prev, habit]);
     setNewName('');
     setShowAdd(false);
-    onRobotEmotion?.('inspired');
-    setTimeout(() => onRobotEmotion?.('neutral'), 2000);
   };
 
   const toggleHabit = (id: string) => {
@@ -65,8 +63,7 @@ export default function Habits({ onRobotEmotion }: HabitsProps) {
 
     const markingDone = !habits.find(h => h.id === id)?.dates.includes(today);
     if (markingDone) {
-      onRobotEmotion?.('love');
-      setTimeout(() => onRobotEmotion?.('neutral'), 2500);
+      onHabitChecked?.();
     }
 
     setHabits(prev => prev.map(h => {
@@ -85,8 +82,6 @@ export default function Habits({ onRobotEmotion }: HabitsProps) {
 
   const deleteHabit = (id: string) => {
     setHabits(prev => prev.filter(h => h.id !== id));
-    onRobotEmotion?.('thinking');
-    setTimeout(() => onRobotEmotion?.('neutral'), 1500);
   };
 
   return (

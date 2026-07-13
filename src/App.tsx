@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   CalendarBlank,
@@ -29,9 +29,12 @@ const EYE_INTERVALS = [
   { label: '45 мин', value: 45 },
 ];
 
+const IDLE_TIMEOUT = 120_000;
+
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('planner');
   const [robotEmotion, setRobotEmotion] = useState<Emotion>('neutral');
+  const [robotSpeech, setRobotSpeech] = useState<string | undefined>();
   const [showTutorial, setShowTutorial] = useLocalStorage('tutorial_done', true);
   const [waterInterval, setWaterInterval] = useLocalStorage<number | null>('water_interval', null);
   const [eyeInterval, setEyeInterval] = useLocalStorage<number | null>('eye_interval', null);
@@ -41,13 +44,44 @@ export default function App() {
   const [showEyeAlert, setShowEyeAlert] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ water: '', eye: '' });
 
+  const idleTimerRef = useRef<number>();
+  const lastActivityRef = useRef(Date.now());
+
+  const resetIdleTimer = useCallback(() => {
+    lastActivityRef.current = Date.now();
+    if (idleTimerRef.current) {
+      clearTimeout(idleTimerRef.current);
+    }
+    idleTimerRef.current = window.setTimeout(() => {
+      if (robotEmotion === 'neutral') {
+        setRobotEmotion('thinking');
+        setRobotSpeech('Задумался... о чём ты думаешь? 🤔');
+        setTimeout(() => {
+          setRobotEmotion('neutral');
+          setRobotSpeech(undefined);
+        }, 4000);
+      }
+    }, IDLE_TIMEOUT);
+  }, [robotEmotion]);
+
+  const setEmotion = useCallback((emotion: Emotion, speech?: string) => {
+    setRobotEmotion(emotion);
+    if (speech) {
+      setRobotSpeech(speech);
+      setTimeout(() => setRobotSpeech(undefined), 3000);
+    } else {
+      setRobotSpeech(undefined);
+    }
+    resetIdleTimer();
+  }, [resetIdleTimer]);
+
   const updateTimers = useCallback(() => {
     if (waterInterval) {
       const elapsed = Math.floor((Date.now() - waterTimer) / 1000);
       const remaining = waterInterval * 60 - elapsed;
       if (remaining <= 0) {
         setShowWaterAlert(true);
-        setRobotEmotion('thirsty');
+        setEmotion('thirsty', 'Пора попить воды! 💧');
         setWaterTimer(Date.now());
       } else {
         const m = Math.floor(remaining / 60);
@@ -60,7 +94,7 @@ export default function App() {
       const remaining = eyeInterval * 60 - elapsed;
       if (remaining <= 0) {
         setShowEyeAlert(true);
-        setRobotEmotion('sleepy');
+        setEmotion('sleepy', 'Сделай разминку для глаз! 🧘');
         setEyeTimer(Date.now());
       } else {
         const m = Math.floor(remaining / 60);
@@ -68,44 +102,65 @@ export default function App() {
         setTimeLeft(prev => ({ ...prev, eye: `${m}:${String(s).padStart(2, '0')}` }));
       }
     }
-  }, [waterInterval, eyeInterval, waterTimer, eyeTimer]);
+  }, [waterInterval, eyeInterval, waterTimer, eyeTimer, setEmotion]);
 
   useEffect(() => {
     const interval = setInterval(updateTimers, 1000);
     return () => clearInterval(interval);
   }, [updateTimers]);
 
+  useEffect(() => {
+    resetIdleTimer();
+    return () => {
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    };
+  }, [resetIdleTimer]);
+
   const startWaterTimer = (minutes: number) => {
     setWaterInterval(minutes);
     setWaterTimer(Date.now());
     setShowWaterAlert(false);
-    setRobotEmotion('thirsty');
-    setTimeout(() => setRobotEmotion('neutral'), 2000);
+    setEmotion('neutral');
   };
 
   const startEyeTimer = (minutes: number) => {
     setEyeInterval(minutes);
     setEyeTimer(Date.now());
     setShowEyeAlert(false);
-    setRobotEmotion('sleepy');
-    setTimeout(() => setRobotEmotion('neutral'), 2000);
+    setEmotion('neutral');
   };
 
   const dismissWater = () => {
     setShowWaterAlert(false);
-    setRobotEmotion('neutral');
     setWaterInterval(null);
+    setEmotion('neutral');
   };
 
   const dismissEye = () => {
     setShowEyeAlert(false);
-    setRobotEmotion('neutral');
     setEyeInterval(null);
+    setEmotion('neutral');
   };
 
   const handleTabChange = (tab: Tab) => {
     setActiveTab(tab);
-    setRobotEmotion('neutral');
+    setEmotion('neutral');
+  };
+
+  const handleTaskCompleted = () => {
+    setEmotion('inspired', 'Отлично! Ты супер! ✨');
+  };
+
+  const handleHabitChecked = () => {
+    setEmotion('happy', 'Привычка растёт! 🌱');
+  };
+
+  const handleIncomeAdded = () => {
+    setEmotion('love', 'Копилка растёт! 💕');
+  };
+
+  const handleExpenseAdded = () => {
+    setEmotion('neutral', 'Тратим с умом 🌸');
   };
 
   const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
@@ -115,13 +170,12 @@ export default function App() {
   ];
 
   return (
-    <div className="app">
+    <div className="app" onClick={resetIdleTimer} onKeyDown={resetIdleTimer}>
       <AnimatePresence>
         {showTutorial && (
           <Tutorial onFinish={() => {
             setShowTutorial(false);
-            setRobotEmotion('happy');
-            setTimeout(() => setRobotEmotion('neutral'), 3000);
+            setEmotion('happy', 'Добро пожаловать! 🎉');
           }} />
         )}
       </AnimatePresence>
@@ -174,9 +228,14 @@ export default function App() {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
               >
-                {activeTab === 'planner' && <Planner onRobotEmotion={setRobotEmotion} />}
-                {activeTab === 'finances' && <Finances onRobotEmotion={setRobotEmotion} />}
-                {activeTab === 'habits' && <Habits onRobotEmotion={setRobotEmotion} />}
+                {activeTab === 'planner' && <Planner onTaskCompleted={handleTaskCompleted} />}
+                {activeTab === 'finances' && (
+                  <Finances
+                    onIncomeAdded={handleIncomeAdded}
+                    onExpenseAdded={handleExpenseAdded}
+                  />
+                )}
+                {activeTab === 'habits' && <Habits onHabitChecked={handleHabitChecked} />}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -184,7 +243,7 @@ export default function App() {
           <aside className="sidebar">
             <RobotAssistant
               emotion={robotEmotion}
-              onEmotionChange={setRobotEmotion}
+              speechText={robotSpeech}
             />
 
             <div className="reminder-section">

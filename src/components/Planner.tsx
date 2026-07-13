@@ -1,13 +1,13 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, CalendarBlank, Plus, Trash } from '@phosphor-icons/react';
-import type { Task, Emotion } from '../types';
+import type { Task } from '../types';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { playCompleteSound } from '../utils/sounds';
 import './Planner.css';
 
 interface PlannerProps {
-  onRobotEmotion?: (emotion: Emotion) => void;
+  onTaskCompleted?: () => void;
 }
 
 function generateId() {
@@ -21,7 +21,7 @@ function formatDate(date: Date): string {
 const DAYS = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 const MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 
-export default function Planner({ onRobotEmotion }: PlannerProps) {
+export default function Planner({ onTaskCompleted }: PlannerProps) {
   const [tasks, setTasks] = useLocalStorage<Task[]>('planner_tasks', []);
   const [currentDate, setCurrentDate] = useState(() => new Date());
   const [newTaskText, setNewTaskText] = useState('');
@@ -59,8 +59,6 @@ export default function Planner({ onRobotEmotion }: PlannerProps) {
     };
     setTasks(prev => [...prev, task]);
     setNewTaskText('');
-    onRobotEmotion?.('thinking');
-    setTimeout(() => onRobotEmotion?.('neutral'), 2000);
   };
 
   const toggleTask = (id: string) => {
@@ -69,8 +67,7 @@ export default function Planner({ onRobotEmotion }: PlannerProps) {
       const becomingCompleted = !t.completed;
       if (becomingCompleted) {
         playCompleteSound();
-        onRobotEmotion?.('happy');
-        setTimeout(() => onRobotEmotion?.('neutral'), 2500);
+        onTaskCompleted?.();
       }
       return { ...t, completed: becomingCompleted };
     }));
@@ -78,7 +75,6 @@ export default function Planner({ onRobotEmotion }: PlannerProps) {
 
   const deleteTask = (id: string) => {
     setTasks(prev => prev.filter(t => t.id !== id));
-    onRobotEmotion?.('neutral');
   };
 
   const prevMonth = () => setCurrentDate(new Date(year, month - 1, 1));

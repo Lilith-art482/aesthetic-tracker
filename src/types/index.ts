@@ -2,20 +2,14 @@ export type Emotion = 'happy' | 'sleepy' | 'thirsty' | 'inspired' | 'neutral' | 
 
 export type Tab = 'planner' | 'finances' | 'habits';
 
+export type OperationType = 'income' | 'expense';
+
 export interface Task {
   id: string;
   text: string;
   date: string;
   completed: boolean;
   createdAt: string;
-}
-
-export interface Expense {
-  id: string;
-  amount: number;
-  category: string;
-  date: string;
-  note: string;
 }
 
 export interface Habit {
@@ -28,7 +22,42 @@ export interface Habit {
   color: string;
 }
 
-export interface FinanceData {
-  budget: number;
-  expenses: Expense[];
+export interface FinanceOperation {
+  id: string;
+  type: OperationType;
+  amount: number;
+  category: string;
+  description: string;
+  date: string;
+  account: string;
+  createdAt: string;
 }
+
+export interface FinanceData {
+  operations: FinanceOperation[];
+}
+
+export const INCOME_CATEGORIES = [
+  'Зарплата',
+  'Фриланс / Подработка',
+  'Подарок',
+  'Инвестиции / Проценты',
+  'Кэшбэк',
+  'Возврат долга',
+  'Продажа вещей',
+  'Другое',
+];
+
+export const EXPENSE_CATEGORIES = [
+  'Еда',
+  'Транспорт',
+  'Одежда',
+  'Развлечения',
+  'Здоровье',
+  'Дом',
+  'Связь',
+  'Образование',
+  'Другое',
+];
+
+export const ACCOUNTS = ['Наличные', 'Карта', 'Сбережения'];
