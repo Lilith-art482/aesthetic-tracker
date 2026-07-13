@@ -19,10 +19,30 @@ function generateId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
 }
 
-const EMPTY_DATA: FinanceData = { operations: [] };
+function migrateOldData(stored: unknown): FinanceData {
+  if (stored && typeof stored === 'object' && 'operations' in stored) {
+    return stored as FinanceData;
+  }
+  const old = stored as { budget?: number; expenses?: Array<{ id: string; amount: number; category: string; date: string; note: string }> } | null;
+  if (old?.expenses) {
+    return {
+      operations: old.expenses.map(e => ({
+        id: e.id,
+        type: 'expense' as const,
+        amount: e.amount,
+        category: e.category,
+        description: e.note || '',
+        date: e.date,
+        account: 'Карта',
+        createdAt: e.date + 'T00:00:00Z',
+      })),
+    };
+  }
+  return { operations: [] };
+}
 
 export default function Finances({ onIncomeAdded, onExpenseAdded }: FinancesProps) {
-  const [data, setData] = useLocalStorage<FinanceData>('finance_data', EMPTY_DATA);
+  const [data, setData] = useLocalStorage<FinanceData>('finance_data', { operations: [] }, migrateOldData);
   const [mode, setMode] = useState<OperationType>('expense');
   const [showAdd, setShowAdd] = useState(false);
   const [amount, setAmount] = useState('');
