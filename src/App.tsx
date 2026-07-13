@@ -44,7 +44,7 @@ export default function App() {
   const [showEyeAlert, setShowEyeAlert] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ water: '', eye: '' });
 
-  const idleTimerRef = useRef<number>();
+  const idleTimerRef = useRef<number | undefined>(undefined);
   const lastActivityRef = useRef(Date.now());
 
   const resetIdleTimer = useCallback(() => {

@@ -284,7 +284,6 @@ export default function Finances({ onIncomeAdded, onExpenseAdded }: FinancesProp
                   ...Object.values(categoryStats).map(s => s.income + s.expense),
                   1
                 );
-                const pct = Math.round((total / maxTotal) * 100);
                 return (
                   <div key={cat} className="chart-row">
                     <div className="chart-bar-track">
