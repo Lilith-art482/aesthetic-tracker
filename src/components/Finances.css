@@ -28,6 +28,7 @@
 
 .summary-card.income { color: #5a9b7a; }
 .summary-card.expense { color: #d48898; }
+.summary-card.positive { color: #5a9b7a; }
 .summary-card.balance.positive { color: #5a9b7a; }
 .summary-card.balance.negative { color: #d48898; }
 
@@ -366,4 +367,373 @@
   color: #b8a8c8;
   font-size: 0.85rem;
   padding: 2rem 0;
+}
+
+/* ===== ВКЛАДКИ ===== */
+.fin-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.fin-tab {
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 60px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #5a4a6b;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+}
+
+.fin-tab:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.fin-tab.active {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(200, 180, 255, 0.4);
+  box-shadow: 0 4px 20px rgba(200, 180, 255, 0.2);
+  color: #3a2a4b;
+}
+
+.fin-tab-content {
+  min-height: 200px;
+}
+
+/* ===== СЕКЦИИ ВКЛАДОК ===== */
+.fin-section {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(255, 182, 193, 0.15), 0 4px 16px rgba(200, 180, 255, 0.1);
+}
+
+.fin-section-summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* ===== КАРТОЧКИ ===== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.card-item {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 16px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.25s ease;
+}
+
+.card-item:hover {
+  transform: translateX(6px);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #3a2a4b;
+  font-size: 0.95rem;
+}
+
+.card-sub {
+  font-size: 0.75rem;
+  color: #7a6a8b;
+}
+
+.card-amount {
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.card-amount.positive { color: #7bc8a0; }
+.card-amount.negative { color: #f5a0a8; }
+.card-amount.neutral { color: #8b7fc7; }
+
+/* ===== ПРОГРЕСС-БАР ===== */
+.progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 120px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.progress-bar.tall {
+  height: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.6s ease;
+}
+
+.progress-fill.green { background: #7bc8a0; }
+.progress-fill.yellow { background: #f5d07a; }
+.progress-fill.red { background: #f5a0a8; }
+.progress-fill.purple { background: #b8a0ff; }
+
+.progress-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #5a4a6b;
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ===== ПУСТОЕ СОСТОЯНИЕ ===== */
+.empty-state {
+  text-align: center;
+  padding: 32px 20px;
+  color: #8a7a9b;
+}
+
+.empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.empty-text {
+  font-size: 0.9rem;
+}
+
+/* ===== КНОПКА ДОБАВЛЕНИЯ ===== */
+.add-btn {
+  padding: 12px 24px;
+  border: 2px dashed rgba(200, 180, 220, 0.3);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #5a4a6b;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: 100%;
+  margin-top: 16px;
+  font-family: inherit;
+}
+
+.add-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(200, 180, 220, 0.6);
+}
+
+/* ===== ПОДУШКА БЕЗОПАСНОСТИ ===== */
+.emergency-card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 18px 22px;
+  margin-bottom: 16px;
+  border-left: 4px solid #b8a0ff;
+}
+
+.emergency-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.emergency-title {
+  font-weight: 600;
+  color: #3a2a4b;
+  font-size: 0.95rem;
+}
+
+.emergency-status {
+  font-size: 0.85rem;
+  color: #7a6a8b;
+}
+
+.emergency-bar-wrap {
+  margin-bottom: 6px;
+}
+
+.emergency-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #7a6a8b;
+  margin-top: 4px;
+}
+
+.emergency-hint {
+  font-size: 0.8rem;
+  color: #8b7fc7;
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px);
+  border-radius: 32px;
+  padding: 28px;
+  max-width: 480px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h3 {
+  font-size: 1.2rem;
+  color: #3a2a4b;
+  margin: 0;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: #8a7a9b;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background: rgba(200, 180, 220, 0.2);
+  color: #5a4a6b;
+}
+
+.modal-body label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #5a4a6b;
+  margin-top: 14px;
+  margin-bottom: 4px;
+}
+
+.modal-body input,
+.modal-body select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid rgba(200, 180, 220, 0.3);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  color: #3a2a4b;
+  box-sizing: border-box;
+}
+
+.modal-body input:focus,
+.modal-body select:focus {
+  outline: none;
+  border-color: #b8a0ff;
+  box-shadow: 0 0 0 3px rgba(200, 180, 255, 0.2);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.modal-btn.confirm {
+  background: #b8a0ff;
+  color: white;
+}
+
+.modal-btn.confirm:hover {
+  background: #a88eef;
+}
+
+.modal-btn.cancel {
+  background: rgba(200, 180, 220, 0.2);
+  color: #5a4a6b;
+}
+
+.modal-btn.cancel:hover {
+  background: rgba(200, 180, 220, 0.35);
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 600px) {
+  .card-item {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .progress-wrap {
+    min-width: 100px;
+  }
+  .modal-content {
+    padding: 20px;
+  }
+  .fin-section-summary {
+    grid-template-columns: 1fr 1fr;
+  }
 }

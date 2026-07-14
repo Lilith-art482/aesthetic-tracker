@@ -33,8 +33,34 @@ export interface FinanceOperation {
   createdAt: string;
 }
 
+export interface Debt {
+  id: string;
+  title: string;
+  type: 'credit' | 'installment' | 'utilities' | 'internet' | 'other';
+  totalAmount: number;
+  monthlyPayment?: number;
+  remainingAmount: number;
+  startDate?: string;
+  endDate?: string;
+  status: 'active' | 'closed' | 'overdue';
+  notes?: string;
+}
+
+export interface Saving {
+  id: string;
+  title: string;
+  currentAmount: number;
+  targetAmount: number;
+  monthlyContribution?: number;
+  targetDate?: string;
+  priority: 'high' | 'medium' | 'low';
+}
+
 export interface FinanceData {
   operations: FinanceOperation[];
+  debts: Debt[];
+  savings: Saving[];
+  monthlyExpenses?: number;
 }
 
 export const INCOME_CATEGORIES = [
