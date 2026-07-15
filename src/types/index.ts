@@ -1,6 +1,6 @@
 export type Emotion = 'happy' | 'sleepy' | 'thirsty' | 'inspired' | 'neutral' | 'love' | 'thinking';
 
-export type Tab = 'planner' | 'finances' | 'habits';
+export type Tab = 'planner' | 'finances' | 'habits' | 'nutrition' | 'recipes' | 'sport';
 
 export type OperationType = 'income' | 'expense';
 
@@ -93,3 +93,31 @@ export const EXPENSE_CATEGORIES = [
 ];
 
 export const ACCOUNTS = ['Наличные', 'Карта', 'Сбережения'];
+
+export interface MealEntry {
+  id: string;
+  name: string;
+  calories: number;
+  protein?: number;
+  fats?: number;
+  carbs?: number;
+  mealType: 'breakfast' | 'lunch' | 'dinner' | 'snack';
+  date: string;
+  createdAt: string;
+}
+
+export const MEAL_TYPES = [
+  { value: 'breakfast', label: 'Завтрак', icon: '🌅' },
+  { value: 'lunch', label: 'Обед', icon: '☀️' },
+  { value: 'dinner', label: 'Ужин', icon: '🌙' },
+  { value: 'snack', label: 'Перекус', icon: '🍪' },
+] as const;
+
+export interface WorkoutEntry {
+  id: string;
+  exercise: string;
+  duration: number;
+  calories?: number;
+  date: string;
+  createdAt: string;
+}

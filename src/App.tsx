@@ -4,6 +4,9 @@ import {
   CalendarBlank,
   Wallet,
   Flower,
+  ForkKnife,
+  BookOpen,
+  Barbell,
   Robot,
   Bell
 } from '@phosphor-icons/react';
@@ -13,6 +16,9 @@ import RobotAssistant from './components/RobotAssistant';
 import Planner from './components/Planner';
 import Finances from './components/Finances';
 import Habits from './components/Habits';
+import Nutrition from './components/Nutrition';
+import Recipes from './components/Recipes';
+import Sport from './components/Sport';
 import LofiPlayer from './components/LofiPlayer';
 import Tutorial from './components/Tutorial';
 import './App.css';
@@ -167,6 +173,9 @@ export default function App() {
     { id: 'planner', label: 'Планер', icon: <CalendarBlank size={22} weight="fill" /> },
     { id: 'finances', label: 'Финансы', icon: <Wallet size={22} weight="fill" /> },
     { id: 'habits', label: 'Привычки', icon: <Flower size={22} weight="fill" /> },
+    { id: 'nutrition', label: 'Питание', icon: <ForkKnife size={22} weight="fill" /> },
+    { id: 'recipes', label: 'Рецепты', icon: <BookOpen size={22} weight="fill" /> },
+    { id: 'sport', label: 'Спорт', icon: <Barbell size={22} weight="fill" /> },
   ];
 
   return (
@@ -236,6 +245,9 @@ export default function App() {
                   />
                 )}
                 {activeTab === 'habits' && <Habits onHabitChecked={handleHabitChecked} />}
+                {activeTab === 'nutrition' && <Nutrition />}
+                {activeTab === 'recipes' && <Recipes />}
+                {activeTab === 'sport' && <Sport />}
               </motion.div>
             </AnimatePresence>
           </div>
