@@ -14,7 +14,7 @@ import { playStoneDropSound } from '../utils/sounds';
 import './Finances.css';
 
 type Tab = 'operations' | 'debts' | 'savings';
-type ModalMode = null | 'debt' | 'saving';
+type ModalMode = null | 'debt' | 'saving' | 'payment';
 
 function generateId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
@@ -75,6 +75,7 @@ function migrateOldData(stored: unknown): FinanceData {
 interface ModalState {
   mode: ModalMode;
   editingId?: string;
+  debtId?: string;
 }
 
 const emptyDebt = (): Omit<Debt, 'id'> => ({
@@ -128,6 +129,10 @@ export default function Finances({ onIncomeAdded, onExpenseAdded }: FinancesProp
 
   // Saving form state
   const [savingForm, setSavingForm] = useState(emptySaving());
+
+  // Payment form state
+  const [paymentAmount, setPaymentAmount] = useState('');
+  const [paymentDate, setPaymentDate] = useState(() => new Date().toISOString().slice(0, 10));
 
   const opCategories = opMode === 'income' ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
 
@@ -211,10 +216,14 @@ export default function Finances({ onIncomeAdded, onExpenseAdded }: FinancesProp
     }));
   };
 
-  const openModal = useCallback((mode: ModalMode, editingId?: string) => {
+  const openModal = useCallback((mode: ModalMode, debtId?: string) => {
     if (mode === 'debt') setDebtForm(emptyDebt());
     if (mode === 'saving') setSavingForm(emptySaving());
-    setModal({ mode, editingId });
+    if (mode === 'payment') {
+      setPaymentAmount('');
+      setPaymentDate(new Date().toISOString().slice(0, 10));
+    }
+    setModal({ mode, debtId });
   }, []);
 
   const closeModal = useCallback(() => {
@@ -241,6 +250,29 @@ export default function Finances({ onIncomeAdded, onExpenseAdded }: FinancesProp
     };
     setData(prev => ({ ...prev, savings: [...prev.savings, saving] }));
     closeModal();
+  };
+
+  const recordPayment = () => {
+    const amt = parseFloat(paymentAmount);
+    if (!amt || amt <= 0 || !modal.debtId) return;
+    setData(prev => ({
+      ...prev,
+      debts: prev.debts.map(d => {
+        if (d.id !== modal.debtId) return d;
+        const newRemaining = Math.max(0, d.remainingAmount - amt);
+        return {
+          ...d,
+          remainingAmount: newRemaining,
+          status: newRemaining <= 0 ? 'closed' : d.status,
+          payments: [...(d.payments || []), { amount: amt, date: paymentDate }],
+        };
+      }),
+    }));
+    closeModal();
+  };
+
+  const deleteDebt = (id: string) => {
+    setData(prev => ({ ...prev, debts: prev.debts.filter(d => d.id !== id) }));
   };
 
   // -- Modal fields --
@@ -288,6 +320,29 @@ export default function Finances({ onIncomeAdded, onExpenseAdded }: FinancesProp
           </select>
           <label>Заметки</label>
           <input value={debtForm.notes || ''} onChange={e => setDebtForm(f => ({ ...f, notes: e.target.value }))} placeholder="Банк, ставка..." />
+        </>
+      );
+    }
+    if (modal.mode === 'payment') {
+      const debt = data.debts.find(d => d.id === modal.debtId);
+      if (!debt) return null;
+      return (
+        <>
+          <div style={{ background: 'rgba(255,255,255,0.15)', borderRadius: 16, padding: '14px 16px', marginBottom: 16 }}>
+            <div style={{ fontWeight: 600, color: '#3a2a4b' }}>{debt.title}</div>
+            <div style={{ fontSize: '0.85rem', color: '#7a6a8b', marginTop: 4 }}>
+              Остаток: {formatMoney(debt.remainingAmount)}
+            </div>
+          </div>
+          <label>Сумма платежа</label>
+          <input
+            type="number" min="0" max={debt.remainingAmount}
+            value={paymentAmount}
+            onChange={e => setPaymentAmount(e.target.value)}
+            placeholder="Сколько внёс?"
+          />
+          <label>Дата платежа</label>
+          <input type="date" value={paymentDate} onChange={e => setPaymentDate(e.target.value)} />
         </>
       );
     }
@@ -538,6 +593,16 @@ export default function Finances({ onIncomeAdded, onExpenseAdded }: FinancesProp
                     <span className="progress-label">{Math.round(progress)}%</span>
                   </div>
                   <span className="card-amount negative">{formatMoney(d.remainingAmount)}</span>
+                  <div className="card-actions">
+                    {d.status === 'active' && (
+                      <button className="card-action-btn pay" onClick={() => openModal('payment', d.id)} title="Внести платёж">
+                        💳
+                      </button>
+                    )}
+                    <button className="card-action-btn delete" onClick={() => deleteDebt(d.id)} title="Удалить">
+                      ✕
+                    </button>
+                  </div>
                 </motion.div>
               );
             })}
@@ -788,7 +853,7 @@ export default function Finances({ onIncomeAdded, onExpenseAdded }: FinancesProp
               onClick={e => e.stopPropagation()}
             >
               <div className="modal-header">
-                <h3>{modal.mode === 'debt' ? '💳 Добавить кредит / обязательство' : '🐷 Добавить цель накопления'}</h3>
+                <h3>{modal.mode === 'debt' ? '💳 Добавить кредит / обязательство' : modal.mode === 'payment' ? '💳 Внести платёж' : '🐷 Добавить цель накопления'}</h3>
                 <button className="modal-close" onClick={closeModal}>
                   <X size={20} />
                 </button>
@@ -806,7 +871,7 @@ export default function Finances({ onIncomeAdded, onExpenseAdded }: FinancesProp
                 </motion.button>
                 <motion.button
                   className="modal-btn confirm"
-                  onClick={modal.mode === 'debt' ? addDebt : addSaving}
+                  onClick={modal.mode === 'debt' ? addDebt : modal.mode === 'payment' ? recordPayment : addSaving}
                   whileTap={{ scale: 0.95 }}
                 >
                   Сохранить

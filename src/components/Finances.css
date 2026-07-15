@@ -477,6 +477,42 @@
 .card-amount.negative { color: #f5a0a8; }
 .card-amount.neutral { color: #8b7fc7; }
 
+.card-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.card-action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.card-action-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.card-action-btn.delete:hover {
+  background: rgba(245, 160, 168, 0.3);
+  border-color: #f5a0a8;
+}
+
+.card-action-btn.pay:hover {
+  background: rgba(123, 200, 160, 0.3);
+  border-color: #7bc8a0;
+}
+
 /* ===== ПРОГРЕСС-БАР ===== */
 .progress-wrap {
   display: flex;

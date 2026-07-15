@@ -33,6 +33,11 @@ export interface FinanceOperation {
   createdAt: string;
 }
 
+export interface DebtPayment {
+  amount: number;
+  date: string;
+}
+
 export interface Debt {
   id: string;
   title: string;
@@ -44,6 +49,7 @@ export interface Debt {
   endDate?: string;
   status: 'active' | 'closed' | 'overdue';
   notes?: string;
+  payments?: DebtPayment[];
 }
 
 export interface Saving {
