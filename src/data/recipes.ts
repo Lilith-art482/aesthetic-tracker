@@ -5,7 +5,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_001',
     name: 'Овсяная каша с ягодами и мёдом',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Овсяные хлопья', weight: 50, unit: 'г' },
       { name: 'Молоко 2.5%', weight: 150, unit: 'мл' },
@@ -25,7 +24,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_002',
     name: 'Яичница-глазунья с авокадо и тостом',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Яйца', weight: 2, unit: 'шт' },
       { name: 'Авокадо', weight: 50, unit: 'г' },
@@ -46,7 +44,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_003',
     name: 'Смузи-боул «Тропический рассвет»',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Банан', weight: 1, unit: 'шт' },
       { name: 'Манго', weight: 100, unit: 'г' },
@@ -67,7 +64,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_004',
     name: 'Творожная запеканка с яблоком',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1596820430994-0f75c6a4f22f?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Творог 5%', weight: 200, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -88,7 +84,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_005',
     name: 'Омлет с шпинатом и сыром фета',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1510693206970-db7f8e7a9a1a?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Яйца', weight: 3, unit: 'шт' },
       { name: 'Шпинат', weight: 50, unit: 'г' },
@@ -109,7 +104,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_006',
     name: 'Тосты с хумусом и овощами',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Хлеб цельнозерновой', weight: 60, unit: 'г' },
       { name: 'Хумус', weight: 50, unit: 'г' },
@@ -130,7 +124,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_007',
     name: 'Чиа-пудинг с клубникой',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1517957754642-2870518e16f8?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Семена чиа', weight: 30, unit: 'г' },
       { name: 'Молоко кокосовое', weight: 150, unit: 'мл' },
@@ -151,7 +144,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_008',
     name: 'Гречка с яйцом и зеленью',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Гречка отварная', weight: 150, unit: 'г' },
       { name: 'Яйцо варёное', weight: 1, unit: 'шт' },
@@ -171,7 +163,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_009',
     name: 'Блинчики из овсяной муки с бананом',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Овсяная мука', weight: 60, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -192,7 +183,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_010',
     name: 'Йогуртовый парфе с гранолой',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Йогурт греческий', weight: 150, unit: 'г' },
       { name: 'Гранола', weight: 30, unit: 'г' },
@@ -213,7 +203,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_011',
     name: 'Запечённые яблоки с творогом',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1612838320302-4b3b3b3b3b3b?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Яблоки', weight: 2, unit: 'шт' },
       { name: 'Творог 5%', weight: 150, unit: 'г' },
@@ -234,7 +223,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_012',
     name: 'Салат с курицей и авокадо',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Куриное филе', weight: 80, unit: 'г' },
       { name: 'Авокадо', weight: 50, unit: 'г' },
@@ -255,7 +243,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_013',
     name: 'Каша киноа с тыквой',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Киноа', weight: 50, unit: 'г' },
       { name: 'Тыква', weight: 100, unit: 'г' },
@@ -276,7 +263,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_014',
     name: 'Сэндвич с яйцом и лососем',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Хлеб цельнозерновой', weight: 60, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -297,7 +283,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_015',
     name: 'Сырники с малиновым соусом',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Творог 5%', weight: 200, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -318,7 +303,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_016',
     name: 'Овсянка с яблоком и корицей (в микроволновке)',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Овсяные хлопья', weight: 40, unit: 'г' },
       { name: 'Молоко', weight: 150, unit: 'мл' },
@@ -339,7 +323,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_017',
     name: 'Скрембл с грибами',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Яйца', weight: 2, unit: 'шт' },
       { name: 'Шампиньоны', weight: 80, unit: 'г' },
@@ -360,7 +343,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_018',
     name: 'Панкейки из кефира с ягодами',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Мука пшеничная', weight: 60, unit: 'г' },
       { name: 'Кефир', weight: 100, unit: 'мл' },
@@ -382,7 +364,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_019',
     name: 'Салат «Цезарь» с креветками',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1558030006-450675393462?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Креветки', weight: 100, unit: 'г' },
       { name: 'Салат романо', weight: 50, unit: 'г' },
@@ -403,7 +384,6 @@ export const recipes: Recipe[] = [
     id: 'breakfast_020',
     name: 'Тофу-скрембл с овощами',
     category: 'breakfast',
-    image: 'https://images.unsplash.com/photo-1592417817098-5f9b23d0fc17?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Тофу', weight: 150, unit: 'г' },
       { name: 'Шпинат', weight: 50, unit: 'г' },
@@ -424,7 +404,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_001',
     name: 'Куриная грудка с гречкой и овощами',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Куриное филе', weight: 150, unit: 'г' },
       { name: 'Гречка отварная', weight: 120, unit: 'г' },
@@ -445,7 +424,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_002',
     name: 'Паста с тунцом и томатами',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1555949258-eb67b1ef0bce?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Паста', weight: 80, unit: 'г' },
       { name: 'Тунец в собственном соку', weight: 100, unit: 'г' },
@@ -466,7 +444,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_003',
     name: 'Лосось с киноа и спаржей',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Лосось', weight: 120, unit: 'г' },
       { name: 'Киноа отварная', weight: 100, unit: 'г' },
@@ -487,7 +464,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_004',
     name: 'Рис с курицей и овощами (по-азиатски)',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Куриное филе', weight: 120, unit: 'г' },
       { name: 'Рис отварной', weight: 120, unit: 'г' },
@@ -509,7 +485,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_005',
     name: 'Чечевичный суп с овощами',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1596742578443-7680c8e0f1b8?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Чечевица красная', weight: 70, unit: 'г' },
       { name: 'Картофель', weight: 80, unit: 'г' },
@@ -531,7 +506,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_006',
     name: 'Куриные котлеты с картофельным пюре',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Куриный фарш', weight: 120, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -553,7 +527,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_007',
     name: 'Салат с курицей, авокадо и грецкими орехами',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Куриное филе', weight: 100, unit: 'г' },
       { name: 'Авокадо', weight: 70, unit: 'г' },
@@ -575,7 +548,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_008',
     name: 'Запечённая индейка с бататом',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Индейка филе', weight: 130, unit: 'г' },
       { name: 'Батат', weight: 150, unit: 'г' },
@@ -596,7 +568,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_009',
     name: 'Бурый рис с лососем и шпинатом',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Бурый рис отварной', weight: 120, unit: 'г' },
       { name: 'Лосось', weight: 100, unit: 'г' },
@@ -617,7 +588,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_010',
     name: 'Творожная запеканка с овощами',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1596820430994-0f75c6a4f22f?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Творог 5%', weight: 150, unit: 'г' },
       { name: 'Яйцо', weight: 2, unit: 'шт' },
@@ -638,7 +608,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_011',
     name: 'Паста с креветками и цукини',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Паста', weight: 80, unit: 'г' },
       { name: 'Креветки', weight: 120, unit: 'г' },
@@ -660,7 +629,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_012',
     name: 'Гречка с грибами и луком',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Гречка отварная', weight: 150, unit: 'г' },
       { name: 'Шампиньоны', weight: 100, unit: 'г' },
@@ -681,7 +649,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_013',
     name: 'Куриные бедрышки с овощами (в духовке)',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Куриные бедра', weight: 150, unit: 'г' },
       { name: 'Картофель', weight: 120, unit: 'г' },
@@ -702,7 +669,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_014',
     name: 'Салат с тунцом, яйцом и фасолью',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Тунец', weight: 100, unit: 'г' },
       { name: 'Яйцо варёное', weight: 1, unit: 'шт' },
@@ -723,7 +689,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_015',
     name: 'Киноа с овощами и фетой',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Киноа отварная', weight: 120, unit: 'г' },
       { name: 'Перец болгарский', weight: 60, unit: 'г' },
@@ -744,7 +709,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_016',
     name: 'Суп-пюре из тыквы с имбирём',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1581324434442-db9b6ae5c123?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Тыква', weight: 200, unit: 'г' },
       { name: 'Картофель', weight: 80, unit: 'г' },
@@ -766,7 +730,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_017',
     name: 'Рис с тофу и овощами',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Рис отварной', weight: 120, unit: 'г' },
       { name: 'Тофу', weight: 120, unit: 'г' },
@@ -787,7 +750,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_018',
     name: 'Куриная печень с луком и гречкой',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Куриная печень', weight: 120, unit: 'г' },
       { name: 'Лук', weight: 50, unit: 'г' },
@@ -808,7 +770,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_019',
     name: 'Фалафель с лавашом и овощами',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1577805947697-89e18249d767?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Фалафель', weight: 120, unit: 'г' },
       { name: 'Лаваш', weight: 40, unit: 'г' },
@@ -829,7 +790,6 @@ export const recipes: Recipe[] = [
     id: 'lunch_020',
     name: 'Рыбные котлеты с картофельным пюре',
     category: 'lunch',
-    image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Минтай/треска', weight: 130, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -850,7 +810,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_001',
     name: 'Запечённый лосось с овощами',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Лосось', weight: 130, unit: 'г' },
       { name: 'Брокколи', weight: 80, unit: 'г' },
@@ -871,7 +830,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_002',
     name: 'Куриные грудки с цукини и томатами',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Куриное филе', weight: 130, unit: 'г' },
       { name: 'Цукини', weight: 100, unit: 'г' },
@@ -892,7 +850,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_003',
     name: 'Омлет с овощами и сыром',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1510693206970-db7f8e7a9a1a?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Яйца', weight: 3, unit: 'шт' },
       { name: 'Молоко', weight: 30, unit: 'мл' },
@@ -914,7 +871,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_004',
     name: 'Салат с креветками и авокадо',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Креветки', weight: 120, unit: 'г' },
       { name: 'Авокадо', weight: 80, unit: 'г' },
@@ -935,7 +891,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_005',
     name: 'Тушёная индейка с брокколи',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Индейка филе', weight: 140, unit: 'г' },
       { name: 'Брокколи', weight: 120, unit: 'г' },
@@ -956,7 +911,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_006',
     name: 'Рыба на пару с рисом',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Минтай', weight: 130, unit: 'г' },
       { name: 'Рис отварной', weight: 100, unit: 'г' },
@@ -977,7 +931,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_007',
     name: 'Греческий салат с курицей',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Куриное филе', weight: 100, unit: 'г' },
       { name: 'Огурец', weight: 70, unit: 'г' },
@@ -999,7 +952,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_008',
     name: 'Тофу-стир-фрай с овощами',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1592417817098-5f9b23d0fc17?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Тофу', weight: 140, unit: 'г' },
       { name: 'Перец болгарский', weight: 60, unit: 'г' },
@@ -1021,7 +973,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_009',
     name: 'Запечённая скумбрия с овощами',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Скумбрия', weight: 140, unit: 'г' },
       { name: 'Картофель', weight: 100, unit: 'г' },
@@ -1042,7 +993,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_010',
     name: 'Куриные тефтели с овощным рагу',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Куриный фарш', weight: 120, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -1064,7 +1014,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_011',
     name: 'Салат с тунцом, яйцом и зеленью',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Тунец', weight: 100, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -1085,7 +1034,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_012',
     name: 'Киноа с тыквой и козьим сыром',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Киноа отварная', weight: 100, unit: 'г' },
       { name: 'Тыква', weight: 120, unit: 'г' },
@@ -1106,7 +1054,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_013',
     name: 'Куриная голень с картофелем (в духовке)',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Куриная голень', weight: 150, unit: 'г' },
       { name: 'Картофель', weight: 120, unit: 'г' },
@@ -1127,7 +1074,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_014',
     name: 'Рыбный суп с овощами',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Минтай', weight: 120, unit: 'г' },
       { name: 'Картофель', weight: 80, unit: 'г' },
@@ -1149,7 +1095,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_015',
     name: 'Спагетти с морепродуктами',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Спагетти', weight: 70, unit: 'г' },
       { name: 'Коктейль из морепродуктов', weight: 120, unit: 'г' },
@@ -1170,7 +1115,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_016',
     name: 'Запечённые овощи с нутом',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Нут консервированный', weight: 100, unit: 'г' },
       { name: 'Баклажан', weight: 80, unit: 'г' },
@@ -1191,7 +1135,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_017',
     name: 'Куриная грудка с грибами в сливочном соусе',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Куриное филе', weight: 130, unit: 'г' },
       { name: 'Шампиньоны', weight: 80, unit: 'г' },
@@ -1212,7 +1155,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_018',
     name: 'Салат «Нисуаз» с тунцом',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Тунец', weight: 100, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -1234,7 +1176,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_019',
     name: 'Фаршированный перец с рисом и мясом',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Перец болгарский', weight: 2, unit: 'шт' },
       { name: 'Фарш говяжий', weight: 100, unit: 'г' },
@@ -1255,7 +1196,6 @@ export const recipes: Recipe[] = [
     id: 'dinner_020',
     name: 'Омлет с лососем и шпинатом',
     category: 'dinner',
-    image: 'https://images.unsplash.com/photo-1510693206970-db7f8e7a9a1a?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Яйца', weight: 3, unit: 'шт' },
       { name: 'Лосось слабосолёный', weight: 50, unit: 'г' },
@@ -1276,7 +1216,6 @@ export const recipes: Recipe[] = [
     id: 'snack_001',
     name: 'Яблоко с арахисовой пастой',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Яблоко', weight: 1, unit: 'шт' },
       { name: 'Арахисовая паста', weight: 15, unit: 'г' },
@@ -1293,7 +1232,6 @@ export const recipes: Recipe[] = [
     id: 'snack_002',
     name: 'Греческий йогурт с мёдом и орехами',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Йогурт греческий 2%', weight: 120, unit: 'г' },
       { name: 'Мёд', weight: 10, unit: 'г' },
@@ -1311,7 +1249,6 @@ export const recipes: Recipe[] = [
     id: 'snack_003',
     name: 'Смузи «Зелёный заряд»',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1610970881699-44a5587cabec?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Банан', weight: 1, unit: 'шт' },
       { name: 'Шпинат', weight: 40, unit: 'г' },
@@ -1330,7 +1267,6 @@ export const recipes: Recipe[] = [
     id: 'snack_004',
     name: 'Творожная масса с зеленью (на хлебце)',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1596820430994-0f75c6a4f22f?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Творог 5%', weight: 80, unit: 'г' },
       { name: 'Зелень (укроп/петрушка)', weight: 20, unit: 'г' },
@@ -1348,7 +1284,6 @@ export const recipes: Recipe[] = [
     id: 'snack_005',
     name: 'Горсть миндаля',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1506066747656-a0f0e6a5a5a5?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Миндаль сырой', weight: 30, unit: 'г' },
     ],
@@ -1363,7 +1298,6 @@ export const recipes: Recipe[] = [
     id: 'snack_006',
     name: 'Смузи «Ягодный взрыв»',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1610970881699-44a5587cabec?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Замороженные ягоды', weight: 80, unit: 'г' },
       { name: 'Банан', weight: 1, unit: 'шт' },
@@ -1381,7 +1315,6 @@ export const recipes: Recipe[] = [
     id: 'snack_007',
     name: 'Сельдерей с хумусом',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Сельдерей стебли', weight: 80, unit: 'г' },
       { name: 'Хумус', weight: 40, unit: 'г' },
@@ -1398,7 +1331,6 @@ export const recipes: Recipe[] = [
     id: 'snack_008',
     name: 'Яйцо варёное с солью',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Яйца', weight: 2, unit: 'шт' },
       { name: 'Соль', weight: 0, unit: 'по вкусу' },
@@ -1415,7 +1347,6 @@ export const recipes: Recipe[] = [
     id: 'snack_009',
     name: 'Творог с ягодами',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1596820430994-0f75c6a4f22f?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Творог 5%', weight: 100, unit: 'г' },
       { name: 'Ягоды', weight: 60, unit: 'г' },
@@ -1433,7 +1364,6 @@ export const recipes: Recipe[] = [
     id: 'snack_010',
     name: 'Овсяное печенье (2 шт)',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Овсяное печенье без сахара', weight: 2, unit: 'шт' },
     ],
@@ -1448,7 +1378,6 @@ export const recipes: Recipe[] = [
     id: 'snack_011',
     name: 'Натуральный йогурт с гранолой',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Йогурт натуральный 2.5%', weight: 100, unit: 'г' },
       { name: 'Гранола', weight: 20, unit: 'г' },
@@ -1465,7 +1394,6 @@ export const recipes: Recipe[] = [
     id: 'snack_012',
     name: 'Тост с авокадо (1/2)',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Хлеб цельнозерновой', weight: 40, unit: 'г' },
       { name: 'Авокадо', weight: 60, unit: 'г' },
@@ -1484,7 +1412,6 @@ export const recipes: Recipe[] = [
     id: 'snack_013',
     name: 'Яблочные чипсы (домашние)',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Яблоко', weight: 1, unit: 'шт' },
       { name: 'Корица', weight: 0, unit: 'по вкусу' },
@@ -1502,7 +1429,6 @@ export const recipes: Recipe[] = [
     id: 'snack_014',
     name: 'Протеиновый батончик',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Протеиновый батончик', weight: 30, unit: 'г' },
     ],
@@ -1517,7 +1443,6 @@ export const recipes: Recipe[] = [
     id: 'snack_015',
     name: 'Салат из помидоров и огурцов с маслом',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Помидор', weight: 80, unit: 'г' },
       { name: 'Огурец', weight: 80, unit: 'г' },
@@ -1536,7 +1461,6 @@ export const recipes: Recipe[] = [
     id: 'snack_016',
     name: 'Кефир со стевией',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Кефир 2.5%', weight: 200, unit: 'мл' },
       { name: 'Стевия', weight: 0, unit: 'по вкусу' },
@@ -1553,7 +1477,6 @@ export const recipes: Recipe[] = [
     id: 'snack_017',
     name: 'Орехово-фруктовая смесь (30г)',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1506066747656-a0f0e6a5a5a5?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Миндаль, грецкие, изюм, курага', weight: 30, unit: 'г' },
     ],
@@ -1568,7 +1491,6 @@ export const recipes: Recipe[] = [
     id: 'snack_018',
     name: 'Ломтики перца с гуакамоле',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Перец болгарский', weight: 100, unit: 'г' },
       { name: 'Авокадо', weight: 60, unit: 'г' },
@@ -1588,7 +1510,6 @@ export const recipes: Recipe[] = [
     id: 'snack_019',
     name: 'Запечённый нут (30г)',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Нут консервированный', weight: 100, unit: 'г' },
       { name: 'Оливковое масло', weight: 5, unit: 'мл' },
@@ -1606,7 +1527,6 @@ export const recipes: Recipe[] = [
     id: 'snack_020',
     name: 'Чай маття с миндальным молоком',
     category: 'snack',
-    image: 'https://images.unsplash.com/photo-1587530885934-67e3ba0d3e61?w=400&h=300&fit=crop',
     ingredients: [
       { name: 'Молоко миндальное', weight: 200, unit: 'мл' },
       { name: 'Маття', weight: 1, unit: 'ч.л.' },

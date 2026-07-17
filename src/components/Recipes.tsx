@@ -90,14 +90,6 @@ function RecipeCard({ recipe, index }: { recipe: Recipe; index: number }) {
       transition={{ delay: index * 0.03, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
       layout
     >
-      {recipe.image && (
-        <img
-          className="recipe-image"
-          src={recipe.image}
-          alt={recipe.name}
-          loading="lazy"
-        />
-      )}
       <div className="recipe-body">
         <div className="recipe-header">
           <h3 className="recipe-title">{recipe.name}</h3>
