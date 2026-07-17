@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { BookOpen } from '@phosphor-icons/react';
 import { recipes } from '../data/recipes';
 import type { Recipe } from '../types';
@@ -20,126 +19,220 @@ const CATEGORY_LABELS: Record<string, string> = {
   snack: '🥜 Перекус',
 };
 
-function ingredientUnit(weight: number, unit?: string): string {
-  if (unit && unit !== 'г') return `${weight} ${unit}`;
-  return `${weight}г`;
+function getDiary(): string[] {
+  try {
+    return JSON.parse(localStorage.getItem('recipe_diary') || '[]');
+  } catch {
+    return [];
+  }
+}
+
+function saveDiary(ids: string[]) {
+  localStorage.setItem('recipe_diary', JSON.stringify(ids));
 }
 
 export default function Recipes() {
   const [filter, setFilter] = useState('all');
+  const [modalRecipe, setModalRecipe] = useState<Recipe | null>(null);
+  const [toast, setToast] = useState('');
+  const [diary, setDiary] = useState<string[]>(getDiary);
+
+  useEffect(() => {
+    setDiary(getDiary());
+  }, []);
 
   const filtered = filter === 'all'
     ? recipes
     : recipes.filter(r => r.category === filter);
 
+  const openModal = (recipe: Recipe) => setModalRecipe(recipe);
+  const closeModal = () => setModalRecipe(null);
+
+  const addToDiary = (id: string) => {
+    if (diary.includes(id)) {
+      showToast('🌸 Уже в твоём дневнике!');
+      return;
+    }
+    const next = [...diary, id];
+    setDiary(next);
+    saveDiary(next);
+    const recipe = recipes.find(r => r.id === id);
+    showToast(`🍽️ «${recipe?.name}» добавлен в дневник!`);
+  };
+
+  const showToast = (msg: string) => {
+    setToast(msg);
+    setTimeout(() => setToast(''), 2500);
+  };
+
   return (
     <div className="recipes">
-      <h2 className="section-title">
-        <BookOpen size={28} weight="fill" />
-        Рецепты
-      </h2>
-
-      <div className="recipes-filters">
-        {FILTERS.map(f => (
-          <motion.button
-            key={f.id}
-            className={`recipes-filter-btn ${filter === f.id ? 'active' : ''}`}
-            onClick={() => setFilter(f.id)}
-            whileTap={{ scale: 0.95 }}
-          >
-            {f.icon} {f.label}
-          </motion.button>
-        ))}
+      <div className="recipes-header">
+        <h2 className="section-title">
+          <BookOpen size={28} weight="fill" />
+          Рецепты
+          <span className="recipes-count">{filtered.length}</span>
+        </h2>
+        <div className="recipes-filters">
+          {FILTERS.map(f => (
+            <button
+              key={f.id}
+              className={`filter-btn ${filter === f.id ? 'active' : ''}`}
+              onClick={() => setFilter(f.id)}
+            >
+              {f.icon} {f.label}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={filter}
-          className="recipes-grid"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-        >
-          {filtered.length === 0 ? (
-            <div className="recipes-empty">
-              <span className="recipes-empty-icon">🧘</span>
-              <p>Нет рецептов в этом разделе</p>
-            </div>
-          ) : (
-            filtered.map((recipe, idx) => (
-              <RecipeCard key={recipe.id} recipe={recipe} index={idx} />
-            ))
-          )}
-        </motion.div>
-      </AnimatePresence>
+      <div className="recipes-grid">
+        {filtered.length === 0 ? (
+          <div className="empty-state">
+            <span className="empty-icon">🧘</span>
+            <p>Нет рецептов в этом разделе</p>
+          </div>
+        ) : (
+          filtered.map(recipe => (
+            <RecipeCard
+              key={recipe.id}
+              recipe={recipe}
+              onOpen={openModal}
+              onAdd={addToDiary}
+              inDiary={diary.includes(recipe.id)}
+            />
+          ))
+        )}
+      </div>
+
+      {modalRecipe && (
+        <RecipeModal
+          recipe={modalRecipe}
+          onClose={closeModal}
+          onAdd={addToDiary}
+          inDiary={diary.includes(modalRecipe.id)}
+        />
+      )}
+
+      <div className={`toast ${toast ? 'show' : ''}`}>{toast}</div>
     </div>
   );
 }
 
-function RecipeCard({ recipe, index }: { recipe: Recipe; index: number }) {
-  const [expanded, setExpanded] = useState(false);
-
-  const categoryLabel = CATEGORY_LABELS[recipe.category] || recipe.category;
-
+function RecipeCard({
+  recipe,
+  onOpen,
+  onAdd,
+  inDiary,
+}: {
+  recipe: Recipe;
+  onOpen: (r: Recipe) => void;
+  onAdd: (id: string) => void;
+  inDiary: boolean;
+}) {
   return (
-    <motion.div
-      className="recipe-card"
-      initial={{ opacity: 0, y: 24, scale: 0.92 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ delay: index * 0.03, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-      layout
-    >
+    <div className="recipe-card">
+      <div className="recipe-icon">{recipe.icon}</div>
       <div className="recipe-body">
         <div className="recipe-header">
           <h3 className="recipe-title">{recipe.name}</h3>
-          <span className="recipe-badge">{categoryLabel}</span>
+          <span className="recipe-badge">{CATEGORY_LABELS[recipe.category]}</span>
         </div>
-
-        <div className="recipe-nutrition">
-          <span className="nutrition-item">🔥 {recipe.nutrition.calories} <span>ккал</span></span>
-          <span className="nutrition-item">🥩 {recipe.nutrition.protein}г</span>
-          <span className="nutrition-item">🧈 {recipe.nutrition.fat}г</span>
-          <span className="nutrition-item">🍞 {recipe.nutrition.carbs}г</span>
+        <div className="nutrition">
+          <span className="n-item">🔥 {recipe.nutrition.calories}</span>
+          <span className="n-item">🥩 {recipe.nutrition.protein}г</span>
+          <span className="n-item">🧈 {recipe.nutrition.fat}г</span>
+          <span className="n-item">🌾 {recipe.nutrition.carbs}г</span>
         </div>
-
-        <div className="recipe-ingredients">
-          {recipe.ingredients.slice(0, 5).map((ing, i) => (
-            <span key={i} className="ingredient-tag">
-              {ing.name} <span className="ingredient-weight">{ingredientUnit(ing.weight, ing.unit)}</span>
+        <div className="ingredients-line">
+          {recipe.ingredients.map((ing, i) => (
+            <span key={i} className="ingr">
+              {ing.name} <span className="weight">{ing.weight}{ing.unit || 'г'}</span>
             </span>
           ))}
-          {recipe.ingredients.length > 5 && (
-            <span className="ingredient-tag">+{recipe.ingredients.length - 5}</span>
-          )}
         </div>
-
         <div className="recipe-footer">
-          <span className="recipe-time">⏱️ {recipe.time} мин</span>
-          <span className="recipe-difficulty">{recipe.difficulty}</span>
+          <span className="time">⏱️ {recipe.time} мин</span>
+          <button className="btn-detail" onClick={() => onOpen(recipe)}>
+            📖 Подробнее
+          </button>
         </div>
-
-        <div className="recipe-expand" onClick={() => setExpanded(!expanded)}>
-          <span>{expanded ? '👆 Свернуть' : '👀 Инструкция'}</span>
-        </div>
-
-        <AnimatePresence>
-          {expanded && (
-            <motion.div
-              className="recipe-instructions"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-            >
-              <ol>
-                {recipe.instructions.map((step, i) => (
-                  <li key={i}>{step}</li>
-                ))}
-              </ol>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <button
+          className={`btn-add ${inDiary ? 'added' : ''}`}
+          onClick={() => onAdd(recipe.id)}
+        >
+          {inDiary ? '✅ В дневнике' : '🍽️ Добавить в дневник'}
+        </button>
       </div>
-    </motion.div>
+    </div>
+  );
+}
+
+function RecipeModal({
+  recipe,
+  onClose,
+  onAdd,
+  inDiary,
+}: {
+  recipe: Recipe;
+  onClose: () => void;
+  onAdd: (id: string) => void;
+  inDiary: boolean;
+}) {
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div className="modal-overlay open" onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
+      <div className="modal">
+        <button className="modal-close" onClick={onClose}>✕</button>
+        <h2 className="modal-title">{recipe.name}</h2>
+        <div className="modal-category">{CATEGORY_LABELS[recipe.category]}</div>
+
+        <div className="modal-nutrition">
+          <span>🔥 <small>{recipe.nutrition.calories} ккал</small></span>
+          <span>🥩 <small>{recipe.nutrition.protein}г</small></span>
+          <span>🧈 <small>{recipe.nutrition.fat}г</small></span>
+          <span>🌾 <small>{recipe.nutrition.carbs}г</small></span>
+        </div>
+
+        <div className="modal-section">
+          <h4>📋 Ингредиенты</h4>
+          <ul>
+            {recipe.ingredients.map((ing, i) => (
+              <li key={i}>
+                <span>{ing.name}</span>
+                <span><strong>{ing.weight}{ing.unit || 'г'}</strong></span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="modal-section">
+          <h4>👩‍🍳 Инструкция</h4>
+          <ol>
+            {recipe.instructions.map((step, i) => (
+              <li key={i}>{step}</li>
+            ))}
+          </ol>
+        </div>
+
+        <button
+          className={`btn-add ${inDiary ? 'added' : ''}`}
+          onClick={() => onAdd(recipe.id)}
+        >
+          {inDiary ? '✅ В дневнике' : '🍽️ Добавить в дневник'}
+        </button>
+      </div>
+    </div>
   );
 }

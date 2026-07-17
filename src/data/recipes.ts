@@ -5,6 +5,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_001',
     name: 'Овсяная каша с ягодами и мёдом',
     category: 'breakfast',
+    icon: '🥣',
     ingredients: [
       { name: 'Овсяные хлопья', weight: 50, unit: 'г' },
       { name: 'Молоко 2.5%', weight: 150, unit: 'мл' },
@@ -24,6 +25,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_002',
     name: 'Яичница-глазунья с авокадо и тостом',
     category: 'breakfast',
+    icon: '🍳',
     ingredients: [
       { name: 'Яйца', weight: 2, unit: 'шт' },
       { name: 'Авокадо', weight: 50, unit: 'г' },
@@ -44,6 +46,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_003',
     name: 'Смузи-боул «Тропический рассвет»',
     category: 'breakfast',
+    icon: '🥥',
     ingredients: [
       { name: 'Банан', weight: 1, unit: 'шт' },
       { name: 'Манго', weight: 100, unit: 'г' },
@@ -64,6 +67,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_004',
     name: 'Творожная запеканка с яблоком',
     category: 'breakfast',
+    icon: '🍏',
     ingredients: [
       { name: 'Творог 5%', weight: 200, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -84,6 +88,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_005',
     name: 'Омлет с шпинатом и сыром фета',
     category: 'breakfast',
+    icon: '🧀',
     ingredients: [
       { name: 'Яйца', weight: 3, unit: 'шт' },
       { name: 'Шпинат', weight: 50, unit: 'г' },
@@ -104,6 +109,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_006',
     name: 'Тосты с хумусом и овощами',
     category: 'breakfast',
+    icon: '🥑',
     ingredients: [
       { name: 'Хлеб цельнозерновой', weight: 60, unit: 'г' },
       { name: 'Хумус', weight: 50, unit: 'г' },
@@ -124,6 +130,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_007',
     name: 'Чиа-пудинг с клубникой',
     category: 'breakfast',
+    icon: '🍓',
     ingredients: [
       { name: 'Семена чиа', weight: 30, unit: 'г' },
       { name: 'Молоко кокосовое', weight: 150, unit: 'мл' },
@@ -144,6 +151,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_008',
     name: 'Гречка с яйцом и зеленью',
     category: 'breakfast',
+    icon: '🌿',
     ingredients: [
       { name: 'Гречка отварная', weight: 150, unit: 'г' },
       { name: 'Яйцо варёное', weight: 1, unit: 'шт' },
@@ -163,6 +171,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_009',
     name: 'Блинчики из овсяной муки с бананом',
     category: 'breakfast',
+    icon: '🥞',
     ingredients: [
       { name: 'Овсяная мука', weight: 60, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -183,6 +192,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_010',
     name: 'Йогуртовый парфе с гранолой',
     category: 'breakfast',
+    icon: '🥛',
     ingredients: [
       { name: 'Йогурт греческий', weight: 150, unit: 'г' },
       { name: 'Гранола', weight: 30, unit: 'г' },
@@ -203,6 +213,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_011',
     name: 'Запечённые яблоки с творогом',
     category: 'breakfast',
+    icon: '🍎',
     ingredients: [
       { name: 'Яблоки', weight: 2, unit: 'шт' },
       { name: 'Творог 5%', weight: 150, unit: 'г' },
@@ -223,6 +234,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_012',
     name: 'Салат с курицей и авокадо',
     category: 'breakfast',
+    icon: '🥗',
     ingredients: [
       { name: 'Куриное филе', weight: 80, unit: 'г' },
       { name: 'Авокадо', weight: 50, unit: 'г' },
@@ -243,6 +255,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_013',
     name: 'Каша киноа с тыквой',
     category: 'breakfast',
+    icon: '🎃',
     ingredients: [
       { name: 'Киноа', weight: 50, unit: 'г' },
       { name: 'Тыква', weight: 100, unit: 'г' },
@@ -263,6 +276,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_014',
     name: 'Сэндвич с яйцом и лососем',
     category: 'breakfast',
+    icon: '🥪',
     ingredients: [
       { name: 'Хлеб цельнозерновой', weight: 60, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -283,6 +297,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_015',
     name: 'Сырники с малиновым соусом',
     category: 'breakfast',
+    icon: '🧇',
     ingredients: [
       { name: 'Творог 5%', weight: 200, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -303,6 +318,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_016',
     name: 'Овсянка с яблоком и корицей (в микроволновке)',
     category: 'breakfast',
+    icon: '🍂',
     ingredients: [
       { name: 'Овсяные хлопья', weight: 40, unit: 'г' },
       { name: 'Молоко', weight: 150, unit: 'мл' },
@@ -323,6 +339,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_017',
     name: 'Скрембл с грибами',
     category: 'breakfast',
+    icon: '🍄',
     ingredients: [
       { name: 'Яйца', weight: 2, unit: 'шт' },
       { name: 'Шампиньоны', weight: 80, unit: 'г' },
@@ -343,6 +360,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_018',
     name: 'Панкейки из кефира с ягодами',
     category: 'breakfast',
+    icon: '🫐',
     ingredients: [
       { name: 'Мука пшеничная', weight: 60, unit: 'г' },
       { name: 'Кефир', weight: 100, unit: 'мл' },
@@ -364,6 +382,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_019',
     name: 'Салат «Цезарь» с креветками',
     category: 'breakfast',
+    icon: '🦐',
     ingredients: [
       { name: 'Креветки', weight: 100, unit: 'г' },
       { name: 'Салат романо', weight: 50, unit: 'г' },
@@ -384,6 +403,7 @@ export const recipes: Recipe[] = [
     id: 'breakfast_020',
     name: 'Тофу-скрембл с овощами',
     category: 'breakfast',
+    icon: '🥬',
     ingredients: [
       { name: 'Тофу', weight: 150, unit: 'г' },
       { name: 'Шпинат', weight: 50, unit: 'г' },
@@ -404,6 +424,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_001',
     name: 'Куриная грудка с гречкой и овощами',
     category: 'lunch',
+    icon: '🍗',
     ingredients: [
       { name: 'Куриное филе', weight: 150, unit: 'г' },
       { name: 'Гречка отварная', weight: 120, unit: 'г' },
@@ -424,6 +445,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_002',
     name: 'Паста с тунцом и томатами',
     category: 'lunch',
+    icon: '🍝',
     ingredients: [
       { name: 'Паста', weight: 80, unit: 'г' },
       { name: 'Тунец в собственном соку', weight: 100, unit: 'г' },
@@ -444,6 +466,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_003',
     name: 'Лосось с киноа и спаржей',
     category: 'lunch',
+    icon: '🐟',
     ingredients: [
       { name: 'Лосось', weight: 120, unit: 'г' },
       { name: 'Киноа отварная', weight: 100, unit: 'г' },
@@ -464,6 +487,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_004',
     name: 'Рис с курицей и овощами (по-азиатски)',
     category: 'lunch',
+    icon: '🥢',
     ingredients: [
       { name: 'Куриное филе', weight: 120, unit: 'г' },
       { name: 'Рис отварной', weight: 120, unit: 'г' },
@@ -485,6 +509,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_005',
     name: 'Чечевичный суп с овощами',
     category: 'lunch',
+    icon: '🥣',
     ingredients: [
       { name: 'Чечевица красная', weight: 70, unit: 'г' },
       { name: 'Картофель', weight: 80, unit: 'г' },
@@ -506,6 +531,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_006',
     name: 'Куриные котлеты с картофельным пюре',
     category: 'lunch',
+    icon: '🥩',
     ingredients: [
       { name: 'Куриный фарш', weight: 120, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -527,6 +553,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_007',
     name: 'Салат с курицей, авокадо и грецкими орехами',
     category: 'lunch',
+    icon: '🥑',
     ingredients: [
       { name: 'Куриное филе', weight: 100, unit: 'г' },
       { name: 'Авокадо', weight: 70, unit: 'г' },
@@ -548,6 +575,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_008',
     name: 'Запечённая индейка с бататом',
     category: 'lunch',
+    icon: '🦃',
     ingredients: [
       { name: 'Индейка филе', weight: 130, unit: 'г' },
       { name: 'Батат', weight: 150, unit: 'г' },
@@ -568,6 +596,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_009',
     name: 'Бурый рис с лососем и шпинатом',
     category: 'lunch',
+    icon: '🍚',
     ingredients: [
       { name: 'Бурый рис отварной', weight: 120, unit: 'г' },
       { name: 'Лосось', weight: 100, unit: 'г' },
@@ -588,6 +617,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_010',
     name: 'Творожная запеканка с овощами',
     category: 'lunch',
+    icon: '🧀',
     ingredients: [
       { name: 'Творог 5%', weight: 150, unit: 'г' },
       { name: 'Яйцо', weight: 2, unit: 'шт' },
@@ -608,6 +638,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_011',
     name: 'Паста с креветками и цукини',
     category: 'lunch',
+    icon: '🍤',
     ingredients: [
       { name: 'Паста', weight: 80, unit: 'г' },
       { name: 'Креветки', weight: 120, unit: 'г' },
@@ -629,6 +660,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_012',
     name: 'Гречка с грибами и луком',
     category: 'lunch',
+    icon: '🍄',
     ingredients: [
       { name: 'Гречка отварная', weight: 150, unit: 'г' },
       { name: 'Шампиньоны', weight: 100, unit: 'г' },
@@ -649,6 +681,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_013',
     name: 'Куриные бедрышки с овощами (в духовке)',
     category: 'lunch',
+    icon: '🍗',
     ingredients: [
       { name: 'Куриные бедра', weight: 150, unit: 'г' },
       { name: 'Картофель', weight: 120, unit: 'г' },
@@ -669,6 +702,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_014',
     name: 'Салат с тунцом, яйцом и фасолью',
     category: 'lunch',
+    icon: '🥗',
     ingredients: [
       { name: 'Тунец', weight: 100, unit: 'г' },
       { name: 'Яйцо варёное', weight: 1, unit: 'шт' },
@@ -689,6 +723,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_015',
     name: 'Киноа с овощами и фетой',
     category: 'lunch',
+    icon: '🧀',
     ingredients: [
       { name: 'Киноа отварная', weight: 120, unit: 'г' },
       { name: 'Перец болгарский', weight: 60, unit: 'г' },
@@ -709,6 +744,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_016',
     name: 'Суп-пюре из тыквы с имбирём',
     category: 'lunch',
+    icon: '🎃',
     ingredients: [
       { name: 'Тыква', weight: 200, unit: 'г' },
       { name: 'Картофель', weight: 80, unit: 'г' },
@@ -730,6 +766,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_017',
     name: 'Рис с тофу и овощами',
     category: 'lunch',
+    icon: '🥢',
     ingredients: [
       { name: 'Рис отварной', weight: 120, unit: 'г' },
       { name: 'Тофу', weight: 120, unit: 'г' },
@@ -750,6 +787,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_018',
     name: 'Куриная печень с луком и гречкой',
     category: 'lunch',
+    icon: '🍗',
     ingredients: [
       { name: 'Куриная печень', weight: 120, unit: 'г' },
       { name: 'Лук', weight: 50, unit: 'г' },
@@ -770,6 +808,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_019',
     name: 'Фалафель с лавашом и овощами',
     category: 'lunch',
+    icon: '🧆',
     ingredients: [
       { name: 'Фалафель', weight: 120, unit: 'г' },
       { name: 'Лаваш', weight: 40, unit: 'г' },
@@ -790,6 +829,7 @@ export const recipes: Recipe[] = [
     id: 'lunch_020',
     name: 'Рыбные котлеты с картофельным пюре',
     category: 'lunch',
+    icon: '🐟',
     ingredients: [
       { name: 'Минтай/треска', weight: 130, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -810,6 +850,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_001',
     name: 'Запечённый лосось с овощами',
     category: 'dinner',
+    icon: '🐟',
     ingredients: [
       { name: 'Лосось', weight: 130, unit: 'г' },
       { name: 'Брокколи', weight: 80, unit: 'г' },
@@ -830,6 +871,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_002',
     name: 'Куриные грудки с цукини и томатами',
     category: 'dinner',
+    icon: '🍗',
     ingredients: [
       { name: 'Куриное филе', weight: 130, unit: 'г' },
       { name: 'Цукини', weight: 100, unit: 'г' },
@@ -850,6 +892,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_003',
     name: 'Омлет с овощами и сыром',
     category: 'dinner',
+    icon: '🧀',
     ingredients: [
       { name: 'Яйца', weight: 3, unit: 'шт' },
       { name: 'Молоко', weight: 30, unit: 'мл' },
@@ -871,6 +914,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_004',
     name: 'Салат с креветками и авокадо',
     category: 'dinner',
+    icon: '🥗',
     ingredients: [
       { name: 'Креветки', weight: 120, unit: 'г' },
       { name: 'Авокадо', weight: 80, unit: 'г' },
@@ -891,6 +935,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_005',
     name: 'Тушёная индейка с брокколи',
     category: 'dinner',
+    icon: '🦃',
     ingredients: [
       { name: 'Индейка филе', weight: 140, unit: 'г' },
       { name: 'Брокколи', weight: 120, unit: 'г' },
@@ -911,6 +956,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_006',
     name: 'Рыба на пару с рисом',
     category: 'dinner',
+    icon: '🐟',
     ingredients: [
       { name: 'Минтай', weight: 130, unit: 'г' },
       { name: 'Рис отварной', weight: 100, unit: 'г' },
@@ -931,6 +977,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_007',
     name: 'Греческий салат с курицей',
     category: 'dinner',
+    icon: '🥗',
     ingredients: [
       { name: 'Куриное филе', weight: 100, unit: 'г' },
       { name: 'Огурец', weight: 70, unit: 'г' },
@@ -952,6 +999,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_008',
     name: 'Тофу-стир-фрай с овощами',
     category: 'dinner',
+    icon: '🥬',
     ingredients: [
       { name: 'Тофу', weight: 140, unit: 'г' },
       { name: 'Перец болгарский', weight: 60, unit: 'г' },
@@ -973,6 +1021,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_009',
     name: 'Запечённая скумбрия с овощами',
     category: 'dinner',
+    icon: '🐟',
     ingredients: [
       { name: 'Скумбрия', weight: 140, unit: 'г' },
       { name: 'Картофель', weight: 100, unit: 'г' },
@@ -993,6 +1042,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_010',
     name: 'Куриные тефтели с овощным рагу',
     category: 'dinner',
+    icon: '🍗',
     ingredients: [
       { name: 'Куриный фарш', weight: 120, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -1014,6 +1064,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_011',
     name: 'Салат с тунцом, яйцом и зеленью',
     category: 'dinner',
+    icon: '🥗',
     ingredients: [
       { name: 'Тунец', weight: 100, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -1034,6 +1085,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_012',
     name: 'Киноа с тыквой и козьим сыром',
     category: 'dinner',
+    icon: '🧀',
     ingredients: [
       { name: 'Киноа отварная', weight: 100, unit: 'г' },
       { name: 'Тыква', weight: 120, unit: 'г' },
@@ -1054,6 +1106,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_013',
     name: 'Куриная голень с картофелем (в духовке)',
     category: 'dinner',
+    icon: '🍗',
     ingredients: [
       { name: 'Куриная голень', weight: 150, unit: 'г' },
       { name: 'Картофель', weight: 120, unit: 'г' },
@@ -1074,6 +1127,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_014',
     name: 'Рыбный суп с овощами',
     category: 'dinner',
+    icon: '🥣',
     ingredients: [
       { name: 'Минтай', weight: 120, unit: 'г' },
       { name: 'Картофель', weight: 80, unit: 'г' },
@@ -1095,6 +1149,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_015',
     name: 'Спагетти с морепродуктами',
     category: 'dinner',
+    icon: '🍝',
     ingredients: [
       { name: 'Спагетти', weight: 70, unit: 'г' },
       { name: 'Коктейль из морепродуктов', weight: 120, unit: 'г' },
@@ -1115,6 +1170,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_016',
     name: 'Запечённые овощи с нутом',
     category: 'dinner',
+    icon: '🥗',
     ingredients: [
       { name: 'Нут консервированный', weight: 100, unit: 'г' },
       { name: 'Баклажан', weight: 80, unit: 'г' },
@@ -1135,6 +1191,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_017',
     name: 'Куриная грудка с грибами в сливочном соусе',
     category: 'dinner',
+    icon: '🍗',
     ingredients: [
       { name: 'Куриное филе', weight: 130, unit: 'г' },
       { name: 'Шампиньоны', weight: 80, unit: 'г' },
@@ -1155,6 +1212,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_018',
     name: 'Салат «Нисуаз» с тунцом',
     category: 'dinner',
+    icon: '🥗',
     ingredients: [
       { name: 'Тунец', weight: 100, unit: 'г' },
       { name: 'Яйцо', weight: 1, unit: 'шт' },
@@ -1176,6 +1234,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_019',
     name: 'Фаршированный перец с рисом и мясом',
     category: 'dinner',
+    icon: '🌶️',
     ingredients: [
       { name: 'Перец болгарский', weight: 2, unit: 'шт' },
       { name: 'Фарш говяжий', weight: 100, unit: 'г' },
@@ -1196,6 +1255,7 @@ export const recipes: Recipe[] = [
     id: 'dinner_020',
     name: 'Омлет с лососем и шпинатом',
     category: 'dinner',
+    icon: '🥚',
     ingredients: [
       { name: 'Яйца', weight: 3, unit: 'шт' },
       { name: 'Лосось слабосолёный', weight: 50, unit: 'г' },
@@ -1216,6 +1276,7 @@ export const recipes: Recipe[] = [
     id: 'snack_001',
     name: 'Яблоко с арахисовой пастой',
     category: 'snack',
+    icon: '🍎',
     ingredients: [
       { name: 'Яблоко', weight: 1, unit: 'шт' },
       { name: 'Арахисовая паста', weight: 15, unit: 'г' },
@@ -1232,6 +1293,7 @@ export const recipes: Recipe[] = [
     id: 'snack_002',
     name: 'Греческий йогурт с мёдом и орехами',
     category: 'snack',
+    icon: '🥛',
     ingredients: [
       { name: 'Йогурт греческий 2%', weight: 120, unit: 'г' },
       { name: 'Мёд', weight: 10, unit: 'г' },
@@ -1249,6 +1311,7 @@ export const recipes: Recipe[] = [
     id: 'snack_003',
     name: 'Смузи «Зелёный заряд»',
     category: 'snack',
+    icon: '🥬',
     ingredients: [
       { name: 'Банан', weight: 1, unit: 'шт' },
       { name: 'Шпинат', weight: 40, unit: 'г' },
@@ -1267,6 +1330,7 @@ export const recipes: Recipe[] = [
     id: 'snack_004',
     name: 'Творожная масса с зеленью (на хлебце)',
     category: 'snack',
+    icon: '🧀',
     ingredients: [
       { name: 'Творог 5%', weight: 80, unit: 'г' },
       { name: 'Зелень (укроп/петрушка)', weight: 20, unit: 'г' },
@@ -1284,6 +1348,7 @@ export const recipes: Recipe[] = [
     id: 'snack_005',
     name: 'Горсть миндаля',
     category: 'snack',
+    icon: '🥜',
     ingredients: [
       { name: 'Миндаль сырой', weight: 30, unit: 'г' },
     ],
@@ -1298,6 +1363,7 @@ export const recipes: Recipe[] = [
     id: 'snack_006',
     name: 'Смузи «Ягодный взрыв»',
     category: 'snack',
+    icon: '🫐',
     ingredients: [
       { name: 'Замороженные ягоды', weight: 80, unit: 'г' },
       { name: 'Банан', weight: 1, unit: 'шт' },
@@ -1315,6 +1381,7 @@ export const recipes: Recipe[] = [
     id: 'snack_007',
     name: 'Сельдерей с хумусом',
     category: 'snack',
+    icon: '🥬',
     ingredients: [
       { name: 'Сельдерей стебли', weight: 80, unit: 'г' },
       { name: 'Хумус', weight: 40, unit: 'г' },
@@ -1331,6 +1398,7 @@ export const recipes: Recipe[] = [
     id: 'snack_008',
     name: 'Яйцо варёное с солью',
     category: 'snack',
+    icon: '🥚',
     ingredients: [
       { name: 'Яйца', weight: 2, unit: 'шт' },
       { name: 'Соль', weight: 0, unit: 'по вкусу' },
@@ -1347,6 +1415,7 @@ export const recipes: Recipe[] = [
     id: 'snack_009',
     name: 'Творог с ягодами',
     category: 'snack',
+    icon: '🍓',
     ingredients: [
       { name: 'Творог 5%', weight: 100, unit: 'г' },
       { name: 'Ягоды', weight: 60, unit: 'г' },
@@ -1364,6 +1433,7 @@ export const recipes: Recipe[] = [
     id: 'snack_010',
     name: 'Овсяное печенье (2 шт)',
     category: 'snack',
+    icon: '🍪',
     ingredients: [
       { name: 'Овсяное печенье без сахара', weight: 2, unit: 'шт' },
     ],
@@ -1378,6 +1448,7 @@ export const recipes: Recipe[] = [
     id: 'snack_011',
     name: 'Натуральный йогурт с гранолой',
     category: 'snack',
+    icon: '🥛',
     ingredients: [
       { name: 'Йогурт натуральный 2.5%', weight: 100, unit: 'г' },
       { name: 'Гранола', weight: 20, unit: 'г' },
@@ -1394,6 +1465,7 @@ export const recipes: Recipe[] = [
     id: 'snack_012',
     name: 'Тост с авокадо (1/2)',
     category: 'snack',
+    icon: '🥑',
     ingredients: [
       { name: 'Хлеб цельнозерновой', weight: 40, unit: 'г' },
       { name: 'Авокадо', weight: 60, unit: 'г' },
@@ -1412,6 +1484,7 @@ export const recipes: Recipe[] = [
     id: 'snack_013',
     name: 'Яблочные чипсы (домашние)',
     category: 'snack',
+    icon: '🍎',
     ingredients: [
       { name: 'Яблоко', weight: 1, unit: 'шт' },
       { name: 'Корица', weight: 0, unit: 'по вкусу' },
@@ -1429,6 +1502,7 @@ export const recipes: Recipe[] = [
     id: 'snack_014',
     name: 'Протеиновый батончик',
     category: 'snack',
+    icon: '🍫',
     ingredients: [
       { name: 'Протеиновый батончик', weight: 30, unit: 'г' },
     ],
@@ -1443,6 +1517,7 @@ export const recipes: Recipe[] = [
     id: 'snack_015',
     name: 'Салат из помидоров и огурцов с маслом',
     category: 'snack',
+    icon: '🥗',
     ingredients: [
       { name: 'Помидор', weight: 80, unit: 'г' },
       { name: 'Огурец', weight: 80, unit: 'г' },
@@ -1461,6 +1536,7 @@ export const recipes: Recipe[] = [
     id: 'snack_016',
     name: 'Кефир со стевией',
     category: 'snack',
+    icon: '🥛',
     ingredients: [
       { name: 'Кефир 2.5%', weight: 200, unit: 'мл' },
       { name: 'Стевия', weight: 0, unit: 'по вкусу' },
@@ -1477,6 +1553,7 @@ export const recipes: Recipe[] = [
     id: 'snack_017',
     name: 'Орехово-фруктовая смесь (30г)',
     category: 'snack',
+    icon: '🥜',
     ingredients: [
       { name: 'Миндаль, грецкие, изюм, курага', weight: 30, unit: 'г' },
     ],
@@ -1491,6 +1568,7 @@ export const recipes: Recipe[] = [
     id: 'snack_018',
     name: 'Ломтики перца с гуакамоле',
     category: 'snack',
+    icon: '🥑',
     ingredients: [
       { name: 'Перец болгарский', weight: 100, unit: 'г' },
       { name: 'Авокадо', weight: 60, unit: 'г' },
@@ -1510,6 +1588,7 @@ export const recipes: Recipe[] = [
     id: 'snack_019',
     name: 'Запечённый нут (30г)',
     category: 'snack',
+    icon: '🧆',
     ingredients: [
       { name: 'Нут консервированный', weight: 100, unit: 'г' },
       { name: 'Оливковое масло', weight: 5, unit: 'мл' },
@@ -1527,6 +1606,7 @@ export const recipes: Recipe[] = [
     id: 'snack_020',
     name: 'Чай маття с миндальным молоком',
     category: 'snack',
+    icon: '🍵',
     ingredients: [
       { name: 'Молоко миндальное', weight: 200, unit: 'мл' },
       { name: 'Маття', weight: 1, unit: 'ч.л.' },

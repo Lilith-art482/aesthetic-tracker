@@ -130,7 +130,7 @@ export interface Recipe {
   id: string;
   name: string;
   category: 'breakfast' | 'lunch' | 'dinner' | 'snack';
-  image?: string;
+  icon: string;
   ingredients: RecipeIngredient[];
   nutrition: RecipeNutrition;
   time: number;
