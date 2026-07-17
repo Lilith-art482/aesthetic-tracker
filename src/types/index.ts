@@ -113,6 +113,31 @@ export const MEAL_TYPES = [
   { value: 'snack', label: 'Перекус', icon: '🍪' },
 ] as const;
 
+export interface RecipeIngredient {
+  name: string;
+  weight: number;
+  unit?: string;
+}
+
+export interface RecipeNutrition {
+  calories: number;
+  protein: number;
+  fat: number;
+  carbs: number;
+}
+
+export interface Recipe {
+  id: string;
+  name: string;
+  category: 'breakfast' | 'lunch' | 'dinner' | 'snack';
+  image?: string;
+  ingredients: RecipeIngredient[];
+  nutrition: RecipeNutrition;
+  time: number;
+  difficulty: string;
+  instructions: string[];
+}
+
 export interface WorkoutEntry {
   id: string;
   exercise: string;
