@@ -7,7 +7,6 @@ import {
   ForkKnife,
   BookOpen,
   Barbell,
-  Robot,
   Bell
 } from '@phosphor-icons/react';
 import type { Emotion, Tab } from './types';
@@ -195,15 +194,9 @@ export default function App() {
         <div className="bg-orb bg-orb-3" />
       </div>
 
-      <header className="app-header">
-        <h1 className="app-logo">
-          <Robot size={28} weight="fill" color="#CFBAE1" />
-          Эстетичный трекер
-        </h1>
-        <div className="header-right">
-          <LofiPlayer />
-        </div>
-      </header>
+      <div className="lofi-corner">
+        <LofiPlayer />
+      </div>
 
       <nav className="app-nav">
         {tabs.map(tab => (
