@@ -25,6 +25,7 @@ interface SavedState {
   isPlaying: boolean;
   volume: number;
   isCompact: boolean;
+  pos: { x: number; y: number } | null;
 }
 
 function loadState(): SavedState | null {
@@ -48,8 +49,21 @@ export default function LofiPlayer() {
   const [volume, setVolume] = useState(0.25);
   const [isCompact, setIsCompact] = useState(false);
   const [audioReady, setAudioReady] = useState(false);
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const playerRef = useRef<HTMLDivElement | null>(null);
+  const lastPosRef = useRef<{ x: number; y: number } | null>(null);
+  const dragRef = useRef<{
+    pointerId: number;
+    startX: number;
+    startY: number;
+    offsetX: number;
+    offsetY: number;
+    moved: boolean;
+  } | null>(null);
+  const movedRef = useRef(false);
 
   const stop = useCallback(() => {
     if (audioRef.current) {
@@ -103,6 +117,8 @@ export default function LofiPlayer() {
       setIsCompact(saved.isCompact);
       setVolume(saved.volume);
       setCurrentSound(saved.currentSound);
+      setPos(saved.pos ?? null);
+      lastPosRef.current = saved.pos ?? null;
       setAudioReady(true);
       if (saved.isPlaying) {
         setTimeout(() => play(saved.currentSound, saved.volume), 500);
@@ -121,21 +137,96 @@ export default function LofiPlayer() {
   // Persist state
   useEffect(() => {
     if (!audioReady) return;
-    saveState({ currentSound, isPlaying, volume, isCompact });
+    saveState({ currentSound, isPlaying, volume, isCompact, pos: lastPosRef.current });
   }, [currentSound, isPlaying, volume, isCompact, audioReady]);
 
   const soundInfo = SOUNDS.find(s => s.id === currentSound)!;
 
+  const onPointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.button !== 0) return;
+    if ((e.target as HTMLElement).closest('button, input')) return;
+    const el = playerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    dragRef.current = {
+      pointerId: e.pointerId,
+      startX: e.clientX,
+      startY: e.clientY,
+      offsetX: e.clientX - rect.left,
+      offsetY: e.clientY - rect.top,
+      moved: false,
+    };
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch { }
+  }, []);
+
+  const onPointerMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    if (!drag || e.pointerId !== drag.pointerId) return;
+    const dx = e.clientX - drag.startX;
+    const dy = e.clientY - drag.startY;
+    if (!drag.moved && Math.abs(dx) < 5 && Math.abs(dy) < 5) return;
+    drag.moved = true;
+    setIsDragging(true);
+    const el = playerRef.current;
+    const margin = 12;
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const elW = el?.offsetWidth ?? 210;
+    const elH = el?.offsetHeight ?? 100;
+    const x = Math.min(Math.max(margin, e.clientX - drag.offsetX), Math.max(margin, w - elW - margin));
+    const y = Math.min(Math.max(margin, e.clientY - drag.offsetY), Math.max(margin, h - elH - margin));
+    lastPosRef.current = { x, y };
+    setPos(lastPosRef.current);
+  }, []);
+
+  const onPointerUp = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    if (drag && e.pointerId === drag.pointerId) {
+      if (drag.moved) {
+        movedRef.current = true;
+        saveState({ currentSound, isPlaying, volume, isCompact, pos: lastPosRef.current });
+      }
+      dragRef.current = null;
+    }
+    setIsDragging(false);
+  }, [currentSound, isPlaying, volume, isCompact]);
+
   return (
     <motion.div
-      className={`lofi-player ${isCompact ? 'compact' : ''}`}
+      ref={playerRef}
+      className={`lofi-player ${isCompact ? 'compact' : ''} ${pos ? 'custom-pos' : ''} ${isDragging ? 'dragging' : ''}`}
+      style={pos ? { left: pos.x, top: pos.y } : undefined}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1 }}
     >
-      <div className="lofi-header" onClick={() => setIsCompact(c => !c)}>
+      <div
+        className={`lofi-header ${isDragging ? 'dragging' : ''}`}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onClick={() => {
+          if (movedRef.current) {
+            movedRef.current = false;
+            return;
+          }
+          setIsCompact(c => !c);
+        }}
+      >
         <span className="lofi-title">🎵 Lo-Fi атмосфера</span>
-        <button className="lofi-header-toggle" onClick={(e) => { e.stopPropagation(); setIsCompact(c => !c); }}>
+        <button
+          className="lofi-header-toggle"
+          onClick={(e) => {
+            e.stopPropagation();
+            if (movedRef.current) {
+              movedRef.current = false;
+              return;
+            }
+            setIsCompact(c => !c);
+          }}
+        >
           {isCompact ? '+' : '−'}
         </button>
       </div>

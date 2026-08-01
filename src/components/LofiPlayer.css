@@ -19,12 +19,27 @@
   box-shadow: 0 30px 80px rgba(200, 180, 220, 0.35);
 }
 
+.lofi-player.custom-pos {
+  bottom: auto;
+  right: auto;
+}
+
+.lofi-player.dragging {
+  transition: none;
+  box-shadow: 0 30px 80px rgba(200, 180, 220, 0.45);
+}
+
 .lofi-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
-  cursor: pointer;
+  cursor: grab;
+  touch-action: none;
+}
+
+.lofi-header.dragging {
+  cursor: grabbing;
 }
 
 .lofi-title {
