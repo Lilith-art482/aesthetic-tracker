@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Barbell, Plus, X } from '@phosphor-icons/react';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useSynced } from '../hooks/useSynced';
 import type { WorkoutEntry } from '../types';
 import './Sport.css';
 
@@ -10,7 +10,7 @@ function generateId() {
 }
 
 export default function Sport() {
-  const [workouts, setWorkouts] = useLocalStorage<WorkoutEntry[]>('sport_data', []);
+  const [workouts, setWorkouts] = useSynced<WorkoutEntry[]>('sport_data', []);
   const [showAdd, setShowAdd] = useState(false);
   const [exercise, setExercise] = useState('');
   const [duration, setDuration] = useState('');

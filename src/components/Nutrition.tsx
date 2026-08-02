@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ForkKnife, Plus, X } from '@phosphor-icons/react';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useSynced } from '../hooks/useSynced';
 import type { MealEntry } from '../types';
 import { MEAL_TYPES } from '../types';
 import './Nutrition.css';
@@ -11,7 +11,7 @@ function generateId() {
 }
 
 export default function Nutrition() {
-  const [meals, setMeals] = useLocalStorage<MealEntry[]>('nutrition_data', []);
+  const [meals, setMeals] = useSynced<MealEntry[]>('nutrition_data', []);
   const [showAdd, setShowAdd] = useState(false);
   const [name, setName] = useState('');
   const [calories, setCalories] = useState('');

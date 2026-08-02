@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, CalendarBlank, Plus, Trash } from '@phosphor-icons/react';
 import type { Task } from '../types';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useSynced } from '../hooks/useSynced';
 import { playCompleteSound } from '../utils/sounds';
 import './Planner.css';
 
@@ -22,7 +22,7 @@ const DAYS = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 const MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
 
 export default function Planner({ onTaskCompleted }: PlannerProps) {
-  const [tasks, setTasks] = useLocalStorage<Task[]>('planner_tasks', []);
+  const [tasks, setTasks] = useSynced<Task[]>('planner_tasks', []);
   const [currentDate, setCurrentDate] = useState(() => new Date());
   const [newTaskText, setNewTaskText] = useState('');
   const [selectedDate, setSelectedDate] = useState<string | null>(null);

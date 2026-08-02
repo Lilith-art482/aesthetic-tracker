@@ -4,7 +4,7 @@ import {
   Wallet, Plus, ArrowDownRight, ArrowUpRight,
   Funnel, ChartPieSlice, X
 } from '@phosphor-icons/react';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useSynced } from '../hooks/useSynced';
 import type {
   FinanceData, FinanceOperation, OperationType,
   Debt, Saving
@@ -105,7 +105,7 @@ interface FinancesProps {
 }
 
 export default function Finances({ onIncomeAdded, onExpenseAdded }: FinancesProps) {
-  const [data, setData] = useLocalStorage<FinanceData>(
+  const [data, setData] = useSynced<FinanceData>(
     'finance_data',
     { operations: [], debts: [], savings: [] },
     migrateOldData,

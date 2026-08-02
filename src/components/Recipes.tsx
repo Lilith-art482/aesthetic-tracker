@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BookOpen } from '@phosphor-icons/react';
 import { recipes } from '../data/recipes';
+import { useSynced } from '../hooks/useSynced';
 import type { Recipe } from '../types';
 import './Recipes.css';
 
@@ -19,27 +20,11 @@ const CATEGORY_LABELS: Record<string, string> = {
   snack: '🥜 Перекус',
 };
 
-function getDiary(): string[] {
-  try {
-    return JSON.parse(localStorage.getItem('recipe_diary') || '[]');
-  } catch {
-    return [];
-  }
-}
-
-function saveDiary(ids: string[]) {
-  localStorage.setItem('recipe_diary', JSON.stringify(ids));
-}
-
 export default function Recipes() {
   const [filter, setFilter] = useState('all');
   const [modalRecipe, setModalRecipe] = useState<Recipe | null>(null);
   const [toast, setToast] = useState('');
-  const [diary, setDiary] = useState<string[]>(getDiary);
-
-  useEffect(() => {
-    setDiary(getDiary());
-  }, []);
+  const [diary, setDiary] = useSynced<string[]>('recipe_diary', []);
 
   const filtered = filter === 'all'
     ? recipes
@@ -55,7 +40,6 @@ export default function Recipes() {
     }
     const next = [...diary, id];
     setDiary(next);
-    saveDiary(next);
     const recipe = recipes.find(r => r.id === id);
     showToast(`🍽️ «${recipe?.name}» добавлен в дневник!`);
   };

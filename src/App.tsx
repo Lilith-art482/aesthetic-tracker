@@ -10,7 +10,9 @@ import {
   Bell
 } from '@phosphor-icons/react';
 import type { Emotion, Tab } from './types';
-import { useLocalStorage } from './hooks/useLocalStorage';
+import { useSynced } from './hooks/useSynced';
+import { useAuth, AuthProvider } from './context/AuthContext';
+import AuthScreen from './components/AuthScreen';
 import RobotAssistant from './components/RobotAssistant';
 import Planner from './components/Planner';
 import Finances from './components/Finances';
@@ -37,12 +39,21 @@ const EYE_INTERVALS = [
 const IDLE_TIMEOUT = 120_000;
 
 export default function App() {
+  return (
+    <AuthProvider>
+      <AppInner />
+    </AuthProvider>
+  );
+}
+
+function AppInner() {
+  const { user, status, logout } = useAuth();
   const [activeTab, setActiveTab] = useState<Tab>('planner');
   const [robotEmotion, setRobotEmotion] = useState<Emotion>('neutral');
   const [robotSpeech, setRobotSpeech] = useState<string | undefined>();
-  const [showTutorial, setShowTutorial] = useLocalStorage('tutorial_done', true);
-  const [waterInterval, setWaterInterval] = useLocalStorage<number | null>('water_interval', null);
-  const [eyeInterval, setEyeInterval] = useLocalStorage<number | null>('eye_interval', null);
+  const [showTutorial, setShowTutorial] = useSynced('tutorial_done', true);
+  const [waterInterval, setWaterInterval] = useSynced<number | null>('water_interval', null);
+  const [eyeInterval, setEyeInterval] = useSynced<number | null>('eye_interval', null);
   const [waterTimer, setWaterTimer] = useState(0);
   const [eyeTimer, setEyeTimer] = useState(0);
   const [showWaterAlert, setShowWaterAlert] = useState(false);
@@ -167,6 +178,21 @@ export default function App() {
   const handleExpenseAdded = () => {
     setEmotion('neutral', 'Тратим с умом 🌸');
   };
+
+  if (status === 'loading') {
+    return (
+      <div className="auth-screen">
+        <div className="auth-card">
+          <div className="auth-logo">🌸</div>
+          <p className="auth-subtitle">Подключаемся к облаку...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <AuthScreen />;
+  }
 
   const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
     { id: 'planner', label: 'Планер', icon: <CalendarBlank size={22} weight="fill" /> },
@@ -374,6 +400,13 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <div className="user-chip">
+        <span className="user-chip-email">{user.email}</span>
+        <button className="user-chip-logout" onClick={() => logout()} title="Выйти из аккаунта">
+          ⎋
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Flower, Plus, Sparkle } from '@phosphor-icons/react';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useSynced } from '../hooks/useSynced';
 import type { Habit } from '../types';
 import { playPianoNote } from '../utils/sounds';
 import './Habits.css';
@@ -34,7 +34,7 @@ function getStreakFlower(streak: number): string {
 }
 
 export default function Habits({ onHabitChecked }: HabitsProps) {
-  const [habits, setHabits] = useLocalStorage<Habit[]>('habits_data', []);
+  const [habits, setHabits] = useSynced<Habit[]>('habits_data', []);
   const [showAdd, setShowAdd] = useState(false);
   const [newName, setNewName] = useState('');
   const [newColor, setNewColor] = useState(0);
