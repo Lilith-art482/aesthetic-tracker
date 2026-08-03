@@ -27,9 +27,9 @@ const LIGHT_FACES: Record<Emotion, FaceConfig> = {
     extra: `
       <circle cx="130" cy="125" r="8" fill="#ffb3c6" opacity="0.6" />
       <circle cx="270" cy="125" r="8" fill="#ffb3c6" opacity="0.6" />
-      <path d="M 130 118 L 136 112 L 142 118" fill="none" stroke="#fff9f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
-      <path d="M 258 118 L 264 112 L 270 118" fill="none" stroke="#fff9f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9" />
       <path d="M 185 170 Q 200 190 215 170" stroke="#ffb3c6" stroke-width="4" fill="none" stroke-linecap="round" />
+      <path d="M 145 128 L 148 125 L 151 128" fill="#fff9f0" opacity="0.6" />
+      <path d="M 249 128 L 252 125 L 255 128" fill="#fff9f0" opacity="0.6" />
     `
   },
   sleepy: {
@@ -62,10 +62,8 @@ const LIGHT_FACES: Record<Emotion, FaceConfig> = {
     rightPupilX: 0, rightPupilY: -3,
     pupilSize: 20, irisColor: '#b8a0ff', eyeColor: '#2d2d4e',
     extra: `
-      <path d="M 130 112 L 134 106 L 140 110 L 134 114 Z" fill="#fff9f0" opacity="0.9" />
-      <path d="M 260 112 L 264 106 L 270 110 L 264 114 Z" fill="#fff9f0" opacity="0.9" />
-      <path d="M 195 108 L 200 98 L 205 108 L 215 110 L 207 116 L 210 126 L 200 120 L 190 126 L 193 116 L 185 110 Z" fill="#ffd700" opacity="0.9" />
-      <circle cx="200" cy="140" r="30" fill="#c8b0ff" opacity="0.15" />
+      <circle cx="200" cy="140" r="25" fill="url(#eyeGlow)" opacity="0.6" />
+      <path d="M 200 165 L 204 172 L 213 174 L 207 180 L 208 189 L 200 184 L 192 189 L 193 180 L 187 174 L 196 172 Z" fill="#ffd700" opacity="0.9" />
     `
   },
   neutral: {
@@ -85,6 +83,8 @@ const LIGHT_FACES: Record<Emotion, FaceConfig> = {
       <path d="M 235 132 A 6 6 0 0 1 247 132 A 6 6 0 0 1 259 132 Q 259 140 247 148 Q 235 140 235 132" fill="#ff4d6d" />
       <text x="80" y="100" font-size="20">❤️</text>
       <text x="310" y="100" font-size="20">❤️</text>
+      <text x="100" y="210" font-size="16">💕</text>
+      <text x="290" y="210" font-size="16">💕</text>
       <path d="M 190 170 Q 200 177 210 170" stroke="#ff8da1" stroke-width="3" fill="none" stroke-linecap="round" />
     `
   },
@@ -247,6 +247,8 @@ const DARK_FACES: Record<Emotion, FaceConfig> = {
       <path d="M 235 132 A 6 6 0 0 1 247 132 A 6 6 0 0 1 259 132 Q 259 140 247 148 Q 235 140 235 132" fill="#ff4d6d" />
       <text x="80" y="100" font-size="20">❤️</text>
       <text x="310" y="100" font-size="20">❤️</text>
+      <text x="100" y="210" font-size="16">💕</text>
+      <text x="290" y="210" font-size="16">💕</text>
       <path d="M 190 170 Q 200 177 210 170" stroke="#ff4d6d" stroke-width="3" fill="none" stroke-linecap="round" />
       <path d="M 130 125 L 160 125" stroke="#B44B8E" stroke-width="2" stroke-linecap="round" />
       <path d="M 270 125 L 240 125" stroke="#B44B8E" stroke-width="2" stroke-linecap="round" />
@@ -382,16 +384,17 @@ function drawRobotSVG(emotion: Emotion, blink: boolean, dark: boolean): string {
   const lx = 145;
   const rx = 255;
 
-  const bodyColor = dark ? '#1a1a2e' : '#fdf6ef';
-  const bodyBottom = dark ? '#0a0a18' : '#f5e4d8';
-  const bodyStroke = dark ? '#2a1a2e' : '#e8d5cc';
+  const bodyTop = dark ? '#3a2a4a' : '#fdf6ef';
+  const bodyBottom = dark ? '#1a0a22' : '#f5e4d8';
+  const bodyColor = dark ? '#2a1a32' : '#f9efe6';
+  const bodyStroke = dark ? '#4a2a5a' : '#e8d5cc';
   const screenColor = dark ? '#0a0a12' : '#1a1a2e';
   const glow = dark ? '#B44B8E' : '#c8b0ff';
-  const innerStroke = dark ? 'rgba(180,75,142,0.15)' : 'rgba(255,255,255,0.3)';
+  const innerStroke = dark ? 'rgba(180,75,142,0.25)' : 'rgba(255,255,255,0.3)';
   const eyeStroke = dark ? '#7928CA' : '#4a4a7a';
-  const highlight = dark ? 0.2 : 0.4;
-  const glassGlare = dark ? 0.03 : 0.08;
-  const glassGlare2 = dark ? 0.02 : 0.05;
+  const highlight = dark ? 0.25 : 0.4;
+  const glassGlare = dark ? 0.04 : 0.08;
+  const glassGlare2 = dark ? 0.03 : 0.05;
   const antennaColor = dark ? '#B44B8E' : '#d4c4b8';
   const antennaTipFill = dark ? '#7928CA' : '#f5c8d0';
   const antennaTipStroke = dark ? '#B44B8E' : '#e8b8c0';
@@ -408,7 +411,7 @@ function drawRobotSVG(emotion: Emotion, blink: boolean, dark: boolean): string {
         <stop offset="100%" stop-color="${glow}" stop-opacity="0" />
       </radialGradient>
       <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="${bodyColor}" />
+        <stop offset="0%" stop-color="${bodyTop}" />
         <stop offset="100%" stop-color="${bodyBottom}" />
       </linearGradient>
     </defs>
@@ -427,8 +430,8 @@ function drawRobotSVG(emotion: Emotion, blink: boolean, dark: boolean): string {
     <circle cx="${rx + em.rightPupilX}" cy="${eyeY + em.rightPupilY}" r="${em.pupilSize}" fill="${em.irisColor}" opacity="0.9" />
     <circle cx="${rx + em.rightPupilX - 4}" cy="${eyeY + em.rightPupilY - 5}" r="5" fill="white" opacity="${highlight}" />
     ${em.extra}
-    <rect x="160" y="305" width="80" height="12" rx="6" fill="${bodyBottom}" stroke="${bodyStroke}" stroke-width="2" />
-    <rect x="140" y="318" width="120" height="16" rx="8" fill="${bodyBottom}" stroke="${bodyStroke}" stroke-width="2" />
+    <rect x="160" y="305" width="80" height="12" rx="6" fill="${bodyColor}" stroke="${bodyStroke}" stroke-width="2" />
+    <rect x="140" y="318" width="120" height="16" rx="8" fill="${bodyColor}" stroke="${bodyStroke}" stroke-width="2" />
     <line x1="200" y1="40" x2="200" y2="20" stroke="${antennaColor}" stroke-width="3" stroke-linecap="round" />
     <circle cx="200" cy="18" r="6" fill="${antennaTipFill}" stroke="${antennaTipStroke}" stroke-width="1.5" />
     <circle cx="200" cy="18" r="2" fill="white" opacity="${antennaShine}" />
