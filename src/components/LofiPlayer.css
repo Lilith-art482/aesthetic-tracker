@@ -3,20 +3,20 @@
   bottom: 24px;
   right: 24px;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--glass-bg);
   backdrop-filter: blur(24px);
   border-radius: 28px;
   padding: 18px 22px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 20px 60px rgba(200, 180, 220, 0.25),
-              0 8px 24px rgba(255, 182, 193, 0.15);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 60px var(--shadow),
+              0 8px 24px var(--shadow);
   min-width: 210px;
   user-select: none;
   transition: all 0.3s ease;
 }
 
 .lofi-player:hover {
-  box-shadow: 0 30px 80px rgba(200, 180, 220, 0.35);
+  box-shadow: 0 30px 80px var(--shadow);
 }
 
 .lofi-player.custom-pos {
@@ -45,14 +45,14 @@
 .lofi-title {
   font-size: 0.85rem;
   font-weight: 700;
-  color: #5a4a6b;
+  color: var(--text-primary);
   letter-spacing: 0.3px;
 }
 
 .lofi-header-toggle {
   font-size: 0.8rem;
-  color: #7a6a8b;
-  background: rgba(255, 255, 255, 0.3);
+  color: var(--text-secondary);
+  background: var(--btn-hover);
   border: none;
   border-radius: 20px;
   padding: 2px 12px;
@@ -62,7 +62,7 @@
 }
 
 .lofi-header-toggle:hover {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--card-bg);
 }
 
 .lofi-sound-list {
@@ -88,22 +88,22 @@
   gap: 8px;
   padding: 7px 10px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--glass-bg);
   border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
   transition: all 0.25s;
-  color: #5a4a6b;
+  color: var(--text-primary);
 }
 
 .lofi-sound-item:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--glass-border);
   transform: translateX(3px);
 }
 
 .lofi-sound-item.active {
-  background: rgba(255, 255, 255, 0.4);
-  border-color: rgba(200, 180, 255, 0.4);
-  box-shadow: 0 0 20px rgba(200, 180, 255, 0.12);
+  background: var(--glass-border);
+  border-color: var(--badge-border);
+  box-shadow: 0 0 20px var(--badge-border);
 }
 
 .sound-icon {
@@ -120,7 +120,7 @@
 
 .sound-status {
   font-size: 0.65rem;
-  color: #8b7fc7;
+  color: var(--accent);
   width: 12px;
   text-align: center;
 }
@@ -130,7 +130,7 @@
   height: 26px;
   border-radius: 50%;
   border: none;
-  background: rgba(200, 180, 255, 0.25);
+  background: var(--btn-hover);
   cursor: pointer;
   font-size: 0.7rem;
   display: flex;
@@ -140,13 +140,13 @@
 }
 
 .lofi-play-btn:hover {
-  background: rgba(200, 180, 255, 0.5);
+  background: var(--btn-hover);
   transform: scale(1.1);
 }
 
 .lofi-play-btn.playing {
-  background: rgba(200, 180, 255, 0.5);
-  box-shadow: 0 0 16px rgba(200, 180, 255, 0.25);
+  background: var(--btn-hover);
+  box-shadow: 0 0 16px var(--btn-hover);
 }
 
 .lofi-volume-row {
@@ -155,7 +155,7 @@
   gap: 8px;
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid var(--glass-bg);
 }
 
 .compact .lofi-volume-row {
@@ -171,7 +171,7 @@
   flex: 1;
   height: 4px;
   border-radius: 2px;
-  background: rgba(200, 180, 220, 0.3);
+  background: var(--btn-hover);
   outline: none;
 }
 
@@ -180,9 +180,9 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #c8b0ff;
+  background: var(--accent);
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(200, 180, 255, 0.3);
+  box-shadow: 0 0 10px var(--btn-hover);
   transition: all 0.2s;
 }
 
@@ -192,7 +192,7 @@
 
 .lofi-vol-value {
   font-size: 0.75rem;
-  color: #7a6a8b;
+  color: var(--text-secondary);
   min-width: 32px;
   text-align: right;
   font-weight: 600;
@@ -217,7 +217,7 @@
   flex: 1;
   font-size: 0.85rem;
   font-weight: 700;
-  color: #5a4a6b;
+  color: var(--text-primary);
 }
 
 .lofi-play-btn.compact {

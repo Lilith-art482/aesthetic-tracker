@@ -23,6 +23,7 @@ import Sport from './components/Sport';
 import LofiPlayer from './components/LofiPlayer';
 import Tutorial from './components/Tutorial';
 import Profile from './components/Profile';
+import { DARK_PHRASES, LIGHT_PHRASES, pickPhrase, type PhraseMap } from './data/phrases';
 import './App.css';
 
 const WATER_INTERVALS = [
@@ -54,6 +55,13 @@ function AppInner() {
   const [robotSpeech, setRobotSpeech] = useState<string | undefined>();
   const [showTutorial, setShowTutorial] = useSynced('tutorial_done', true);
   const [showProfile, setShowProfile] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    try {
+      return localStorage.getItem('theme') === 'dark';
+    } catch {
+      return false;
+    }
+  });
   const [waterInterval, setWaterInterval] = useSynced<number | null>('water_interval', null);
   const [eyeInterval, setEyeInterval] = useSynced<number | null>('eye_interval', null);
   const [waterTimer, setWaterTimer] = useState(0);
@@ -64,6 +72,18 @@ function AppInner() {
 
   const idleTimerRef = useRef<number | undefined>(undefined);
   const lastActivityRef = useRef(Date.now());
+  const greetedRef = useRef(false);
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-theme', isDark);
+    try {
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    } catch { }
+  }, [isDark]);
+
+  const pickPhraseText = useCallback((event: keyof PhraseMap) => {
+    return pickPhrase(isDark ? DARK_PHRASES : LIGHT_PHRASES, event);
+  }, [isDark]);
 
   const resetIdleTimer = useCallback(() => {
     lastActivityRef.current = Date.now();
@@ -73,14 +93,14 @@ function AppInner() {
     idleTimerRef.current = window.setTimeout(() => {
       if (robotEmotion === 'neutral') {
         setRobotEmotion('thinking');
-        setRobotSpeech('Задумался... о чём ты думаешь? 🤔');
+        setRobotSpeech(pickPhraseText('idle'));
         setTimeout(() => {
           setRobotEmotion('neutral');
           setRobotSpeech(undefined);
         }, 4000);
       }
     }, IDLE_TIMEOUT);
-  }, [robotEmotion]);
+  }, [robotEmotion, pickPhraseText]);
 
   const setEmotion = useCallback((emotion: Emotion, speech?: string) => {
     setRobotEmotion(emotion);
@@ -99,7 +119,7 @@ function AppInner() {
       const remaining = waterInterval * 60 - elapsed;
       if (remaining <= 0) {
         setShowWaterAlert(true);
-        setEmotion('thirsty', 'Пора попить воды! 💧');
+        setEmotion('thirsty', pickPhraseText('waterReminder'));
         setWaterTimer(Date.now());
       } else {
         const m = Math.floor(remaining / 60);
@@ -112,7 +132,7 @@ function AppInner() {
       const remaining = eyeInterval * 60 - elapsed;
       if (remaining <= 0) {
         setShowEyeAlert(true);
-        setEmotion('sleepy', 'Сделай разминку для глаз! 🧘');
+        setEmotion('sleepy', pickPhraseText('eyeReminder'));
         setEyeTimer(Date.now());
       } else {
         const m = Math.floor(remaining / 60);
@@ -120,7 +140,7 @@ function AppInner() {
         setTimeLeft(prev => ({ ...prev, eye: `${m}:${String(s).padStart(2, '0')}` }));
       }
     }
-  }, [waterInterval, eyeInterval, waterTimer, eyeTimer, setEmotion]);
+  }, [waterInterval, eyeInterval, waterTimer, eyeTimer, setEmotion, pickPhraseText]);
 
   useEffect(() => {
     const interval = setInterval(updateTimers, 1000);
@@ -166,19 +186,38 @@ function AppInner() {
   };
 
   const handleTaskCompleted = () => {
-    setEmotion('inspired', 'Отлично! Ты супер! ✨');
+    setEmotion('inspired', pickPhraseText('taskComplete'));
   };
 
   const handleHabitChecked = () => {
-    setEmotion('happy', 'Привычка растёт! 🌱');
+    setEmotion('happy', pickPhraseText('habitDone'));
   };
 
   const handleIncomeAdded = () => {
-    setEmotion('love', 'Копилка растёт! 💕');
+    setEmotion('love', pickPhraseText('incomeAdded'));
   };
 
   const handleExpenseAdded = () => {
-    setEmotion('neutral', 'Тратим с умом 🌸');
+    setEmotion('neutral', pickPhraseText('expenseAdded'));
+  };
+
+  useEffect(() => {
+    if (!user || showTutorial || greetedRef.current) return;
+    greetedRef.current = true;
+    const t = window.setTimeout(() => {
+      setEmotion('happy', pickPhraseText('morningGreeting'));
+    }, 1200);
+    return () => clearTimeout(t);
+  }, [user, showTutorial, pickPhraseText, setEmotion]);
+
+  const toggleTheme = () => {
+    const next = !isDark;
+    setIsDark(next);
+    if (next) {
+      setEmotion('mischievous', 'Вот теперь тёмная сторона силы. Нравится?');
+    } else {
+      setEmotion('happy', 'О, ты вернулся на светлую сторону! 🌸');
+    }
   };
 
   if (status === 'loading') {
@@ -211,7 +250,7 @@ function AppInner() {
         {showTutorial && (
           <Tutorial onFinish={() => {
             setShowTutorial(false);
-            setEmotion('happy', 'Добро пожаловать! 🎉');
+            setEmotion('happy', pickPhraseText('morningGreeting'));
           }} />
         )}
       </AnimatePresence>
@@ -220,11 +259,21 @@ function AppInner() {
         <div className="bg-orb bg-orb-1" />
         <div className="bg-orb bg-orb-2" />
         <div className="bg-orb bg-orb-3" />
+        <div className="stars" />
       </div>
 
       <div className="lofi-corner">
         <LofiPlayer />
       </div>
+
+      <button
+        className="theme-toggle"
+        onClick={toggleTheme}
+        title={isDark ? 'Светлая тема' : 'Тёмная тема'}
+      >
+        <span>{isDark ? '☀️' : '🌙'}</span>
+        <span className="theme-toggle-text">{isDark ? 'Светлая тема' : 'Тёмная тема'}</span>
+      </button>
 
       <button
         className="profile-btn"
@@ -285,6 +334,7 @@ function AppInner() {
             <RobotAssistant
               emotion={robotEmotion}
               speechText={robotSpeech}
+              dark={isDark}
             />
 
             <div className="reminder-section">

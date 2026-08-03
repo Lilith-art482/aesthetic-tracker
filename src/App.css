@@ -23,7 +23,7 @@
 .bg-orb-1 {
   width: 400px;
   height: 400px;
-  background: #FDE2E4;
+  background: var(--accent-soft);
   top: -100px;
   left: -100px;
   animation: orbFloat 12s ease-in-out infinite alternate;
@@ -32,7 +32,7 @@
 .bg-orb-2 {
   width: 350px;
   height: 350px;
-  background: #CFBAE1;
+  background: var(--accent);
   bottom: -80px;
   right: -80px;
   animation: orbFloat 15s ease-in-out infinite alternate-reverse;
@@ -41,7 +41,7 @@
 .bg-orb-3 {
   width: 300px;
   height: 300px;
-  background: #B5EAD7;
+  background: var(--accent-green);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -68,9 +68,9 @@
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: linear-gradient(135deg, #CFBAE1, #FDE2E4);
-  color: #5a4a6b;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  color: var(--text-primary);
   font-size: 1.15rem;
   font-weight: 800;
   cursor: pointer;
@@ -78,7 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(200, 180, 220, 0.35);
+  box-shadow: 0 8px 24px var(--shadow);
   transition: all 0.2s;
 }
 
@@ -94,19 +94,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(90, 74, 107, 0.3);
+  background: var(--overlay);
   backdrop-filter: blur(6px);
   padding: 1rem;
 }
 
 .profile-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--glass-border);
   backdrop-filter: blur(24px);
   border-radius: 28px;
   padding: 2.5rem 2rem 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 20px 60px rgba(255, 182, 193, 0.2);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 60px var(--shadow);
   max-width: 360px;
   width: 100%;
   text-align: center;
@@ -117,8 +117,8 @@
   top: 1rem;
   left: 1rem;
   border: none;
-  background: rgba(255, 255, 255, 0.3);
-  color: #5a4a6b;
+  background: var(--btn-hover);
+  color: var(--text-primary);
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -132,34 +132,34 @@
 }
 
 .profile-back:hover {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--card-bg);
 }
 
 .profile-avatar {
   width: 84px;
   height: 84px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #CFBAE1, #FDE2E4);
-  color: #5a4a6b;
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  color: var(--text-primary);
   font-size: 2.2rem;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
-  box-shadow: 0 8px 24px rgba(200, 180, 220, 0.35);
+  box-shadow: 0 8px 24px var(--shadow);
 }
 
 .profile-name {
   font-size: 1.3rem;
   font-weight: 800;
-  color: #5a4a6b;
+  color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 
 .profile-email {
   font-size: 0.85rem;
-  color: #7a6a8b;
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
   word-break: break-all;
 }
@@ -170,9 +170,9 @@
   gap: 0.5rem;
   margin-bottom: 1.5rem;
   padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--glass-bg);
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--glass-bg);
 }
 
 .profile-info-row {
@@ -180,11 +180,11 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.8rem;
-  color: #7a6a8b;
+  color: var(--text-secondary);
 }
 
 .profile-info-row strong {
-  color: #5a4a6b;
+  color: var(--text-primary);
   font-weight: 700;
 }
 
@@ -192,9 +192,9 @@
   width: 100%;
   padding: 12px;
   border-radius: 60px;
-  border: 1px solid rgba(253, 226, 228, 0.8);
-  background: rgba(253, 226, 228, 0.3);
-  color: #c88a98;
+  border: 1px solid var(--danger-hover);
+  background: var(--danger-bg);
+  color: var(--danger);
   font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
@@ -203,8 +203,8 @@
 }
 
 .profile-logout:hover {
-  background: rgba(253, 226, 228, 0.6);
-  color: #c88a98;
+  background: var(--danger-hover);
+  color: var(--danger);
 }
 
 @media (max-width: 480px) {
@@ -232,10 +232,10 @@
   gap: 6px;
   padding: 10px 20px;
   border-radius: 60px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
   backdrop-filter: blur(12px);
-  color: #8a7a9b;
+  color: var(--text-secondary);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
@@ -244,14 +244,14 @@
 }
 
 .nav-btn:hover {
-  background: rgba(255, 255, 255, 0.35);
-  color: #5a4a6b;
+  background: var(--glass-border);
+  color: var(--text-primary);
 }
 
 .nav-btn.active {
-  background: rgba(255, 255, 255, 0.4);
-  color: #5a4a6b;
-  box-shadow: 0 4px 16px rgba(207, 186, 225, 0.2);
+  background: var(--glass-border);
+  color: var(--text-primary);
+  box-shadow: 0 4px 16px var(--btn-hover);
 }
 
 .nav-indicator {
@@ -262,7 +262,7 @@
   width: 20px;
   height: 3px;
   border-radius: 3px;
-  background: #CFBAE1;
+  background: var(--accent);
 }
 
 .app-main {
@@ -361,12 +361,12 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--glass-border);
   backdrop-filter: blur(24px);
   border-radius: 20px;
   padding: 8px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 32px rgba(207, 186, 225, 0.2);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px var(--btn-hover);
   white-space: nowrap;
   animation: speechPop 0.3s ease-out;
 }
@@ -381,7 +381,7 @@
   height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 8px solid rgba(255, 255, 255, 0.35);
+  border-top: 8px solid var(--glass-border);
 }
 
 @keyframes speechPop {
@@ -392,7 +392,7 @@
 .speech-text {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #5a4a6b;
+  color: var(--text-primary);
 }
 
 /* Section title */
@@ -402,18 +402,18 @@
   gap: 0.5rem;
   font-size: 1.3rem;
   font-weight: 800;
-  color: #5a4a6b;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 /* Reminder section */
 .reminder-section {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border-radius: 20px;
   padding: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 32px rgba(255, 182, 193, 0.1), 0 4px 16px rgba(200, 180, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px var(--shadow), 0 4px 16px rgba(200, 180, 255, 0.08);
 }
 
 .reminder-title {
@@ -421,16 +421,16 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.85rem;
-  color: #5a4a6b;
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
 .reminder-card {
   margin-bottom: 0.75rem;
   padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--glass-bg);
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--glass-bg);
 }
 
 .reminder-card:last-child {
@@ -443,13 +443,13 @@
   align-items: center;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #5a4a6b;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .reminder-time {
   font-size: 0.75rem;
-  color: #CFBAE1;
+  color: var(--accent);
   font-weight: 700;
 }
 
@@ -461,9 +461,9 @@
 .reminder-btn {
   padding: 6px 12px;
   border-radius: 60px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.2);
-  color: #5a4a6b;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-primary);
   font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
@@ -472,15 +472,15 @@
 }
 
 .reminder-btn:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--glass-border);
 }
 
 .reminder-stop {
   padding: 6px 14px;
   border-radius: 60px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(253, 226, 228, 0.3);
-  color: #c88a98;
+  border: 1px solid var(--glass-border);
+  background: var(--danger-bg);
+  color: var(--danger);
   font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
@@ -496,18 +496,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(90, 74, 107, 0.3);
+  background: var(--overlay);
   backdrop-filter: blur(6px);
   padding: 1rem;
 }
 
 .alert-card {
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--glass-border);
   backdrop-filter: blur(24px);
   border-radius: 28px;
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 20px 60px rgba(255, 182, 193, 0.2);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 60px var(--shadow);
   max-width: 340px;
   width: 100%;
   text-align: center;
@@ -522,13 +522,13 @@
 .alert-card h3 {
   font-size: 1.2rem;
   font-weight: 800;
-  color: #5a4a6b;
+  color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 
 .alert-card p {
   font-size: 0.85rem;
-  color: #7a6a8b;
+  color: var(--text-secondary);
   margin-bottom: 1.25rem;
 }
 
@@ -549,13 +549,160 @@
 }
 
 .alert-btn.primary {
-  background: linear-gradient(135deg, #CFBAE1, #B5EAD7);
+  background: linear-gradient(135deg, var(--accent), var(--accent-green));
   color: white;
-  box-shadow: 0 4px 16px rgba(207, 186, 225, 0.3);
+  box-shadow: 0 4px 16px var(--btn-hover);
 }
 
 .alert-btn.secondary {
   background: transparent;
-  color: #8a7a9b;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: var(--text-secondary);
+  border: 1px solid var(--glass-border);
+}
+
+/* ===== Тёмная тема «Дерзкий чертёнок» ===== */
+
+/* Кнопка переключения темы */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: calc(1rem + 54px);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  height: 46px;
+  border-radius: 60px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+.theme-toggle:hover {
+  background: var(--glass-border);
+  transform: scale(1.04);
+}
+
+.theme-toggle .theme-toggle-text {
+  font-size: 0.8rem;
+}
+
+/* Звёзды / частицы в тёмной теме */
+.stars {
+  display: none;
+}
+
+.dark-theme .stars {
+  display: block;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, rgba(180, 75, 142, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(0, 212, 255, 0.2), transparent),
+    radial-gradient(2px 2px at 100px 150px, rgba(180, 75, 142, 0.4), transparent);
+  background-size: 200px 200px;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+/* Орбы фона в тёмной теме */
+.dark-theme .bg-orb-1 {
+  background: rgba(180, 75, 142, 0.22);
+}
+
+.dark-theme .bg-orb-2 {
+  background: rgba(180, 75, 142, 0.18);
+}
+
+.dark-theme .bg-orb-3 {
+  background: rgba(0, 212, 255, 0.1);
+}
+
+/* Помощник: рожки и хвостик */
+.horns {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.tail {
+  position: absolute;
+  bottom: -42px;
+  right: -34px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* По умолчанию скрыты */
+.horns, .tail {
+  display: none;
+}
+
+.dark-theme .horns {
+  display: block;
+  animation: floatHorns 3s ease-in-out infinite;
+}
+
+.dark-theme .tail {
+  display: block;
+  animation: floatTail 3s ease-in-out infinite;
+}
+
+@keyframes floatHorns {
+  0%, 100% { transform: translateX(-50%) translateY(0) rotate(-2deg); }
+  50% { transform: translateX(-50%) translateY(-8px) rotate(2deg); }
+}
+
+@keyframes floatTail {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+/* Свечение рожек */
+.dark-theme .horns path {
+  filter: drop-shadow(0 0 12px rgba(180, 75, 142, 0.6));
+  animation: hornGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes hornGlow {
+  0% { filter: drop-shadow(0 0 8px rgba(180, 75, 142, 0.4)); }
+  100% { filter: drop-shadow(0 0 20px rgba(180, 75, 142, 0.8)); }
+}
+
+/* Неоновое свечение робота в тёмной теме */
+.dark-theme .robot-svg {
+  filter: drop-shadow(0 8px 24px rgba(180, 75, 142, 0.35));
+}
+
+.dark-theme .speech-text {
+  text-shadow: var(--text-glow);
+}
+
+@media (max-width: 480px) {
+  .theme-toggle {
+    top: 0.5rem;
+    right: calc(0.5rem + 48px);
+    height: 40px;
+    padding: 0 12px;
+  }
+  .theme-toggle-text {
+    display: none;
+  }
 }

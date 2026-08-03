@@ -10,6 +10,69 @@
 
 :root {
   --font: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* СВЕТЛАЯ ТЕМА (пастель) */
+  --bg-primary: #fce8e6;
+  --bg-secondary: #f3dce8;
+  --glass-bg: rgba(255, 255, 255, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --text-primary: #5a4a6b;
+  --text-secondary: #7a6a8b;
+  --accent: #CFBAE1;
+  --accent-hover: #b8a0ef;
+  --accent-soft: #FDE2E4;
+  --accent-green: #B5EAD7;
+  --danger: #c88a98;
+  --danger-bg: rgba(253, 226, 228, 0.3);
+  --danger-hover: rgba(253, 226, 228, 0.6);
+  --success: #5a9b7a;
+  --success-bg: rgba(123, 200, 160, 0.3);
+  --warning: #f5d07a;
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --badge-bg: rgba(200, 180, 255, 0.2);
+  --badge-border: rgba(200, 180, 255, 0.15);
+  --btn-bg: rgba(200, 180, 255, 0.15);
+  --btn-hover: rgba(200, 180, 255, 0.3);
+  --toast-bg: rgba(255, 255, 255, 0.85);
+  --modal-bg: rgba(255, 255, 255, 0.85);
+  --overlay: rgba(90, 74, 107, 0.3);
+  --shadow: 0 8px 32px rgba(200, 180, 220, 0.15);
+  --icon-filter: none;
+  --text-glow: none;
+  --bg-gradient: linear-gradient(145deg, #fce8e6, #f3dce8, #e6d9f0, #dce8f0);
+}
+
+.dark-theme {
+  /* ТЁМНАЯ ТЕМА (неоновый чертёнок) */
+  --bg-primary: #0B0A0E;
+  --bg-secondary: #14111a;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(180, 75, 142, 0.25);
+  --text-primary: #F5E9FF;
+  --text-secondary: #9A8BA8;
+  --accent: #B44B8E;
+  --accent-hover: #D060B0;
+  --accent-soft: #B44B8E;
+  --accent-green: #00D4FF;
+  --danger: #E06A9E;
+  --danger-bg: rgba(180, 75, 142, 0.18);
+  --danger-hover: rgba(180, 75, 142, 0.35);
+  --success: #00D4FF;
+  --success-bg: rgba(0, 212, 255, 0.15);
+  --warning: #FFD166;
+  --card-bg: rgba(20, 17, 26, 0.65);
+  --badge-bg: rgba(180, 75, 142, 0.2);
+  --badge-border: rgba(180, 75, 142, 0.25);
+  --btn-bg: rgba(180, 75, 142, 0.15);
+  --btn-hover: rgba(180, 75, 142, 0.35);
+  --toast-bg: rgba(20, 17, 26, 0.9);
+  --modal-bg: rgba(20, 17, 26, 0.9);
+  --overlay: rgba(0, 0, 0, 0.6);
+  --shadow: 0 8px 32px rgba(180, 75, 142, 0.15),
+             0 0 60px rgba(180, 75, 142, 0.05);
+  --icon-filter: drop-shadow(0 0 8px rgba(180, 75, 142, 0.3));
+  --text-glow: 0 0 20px rgba(180, 75, 142, 0.15);
+  --bg-gradient: linear-gradient(145deg, #0B0A0E, #14111a, #120e16);
 }
 
 html {
@@ -20,11 +83,12 @@ html {
 
 body {
   font-family: var(--font);
-  background: linear-gradient(145deg, #fce8e6, #f3dce8, #e6d9f0, #dce8f0);
+  background: var(--bg-gradient);
   background-attachment: fixed;
   min-height: 100vh;
-  color: #5a4a6b;
+  color: var(--text-primary);
   overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 #root {
@@ -32,8 +96,8 @@ body {
 }
 
 ::selection {
-  background: rgba(207, 186, 225, 0.3);
-  color: #5a4a6b;
+  background: var(--btn-hover);
+  color: var(--text-primary);
 }
 
 ::-webkit-scrollbar {
@@ -45,18 +109,18 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(207, 186, 225, 0.3);
+  background: var(--btn-hover);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(207, 186, 225, 0.5);
+  background: var(--accent-hover);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font);
   font-weight: 800;
-  color: #5a4a6b;
+  color: var(--text-primary);
 }
 
 button {

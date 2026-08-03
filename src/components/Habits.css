@@ -9,8 +9,8 @@
 .habit-add-btn {
   padding: 10px 20px;
   border-radius: 60px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: linear-gradient(135deg, #CFBAE1, #B5EAD7);
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, var(--accent), var(--accent-green));
   color: white;
   font-weight: 700;
   font-size: 0.9rem;
@@ -19,16 +19,16 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 4px 16px rgba(207, 186, 225, 0.3);
+  box-shadow: 0 4px 16px var(--btn-hover);
 }
 
 .habit-form {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border-radius: 20px;
   padding: 1rem;
   margin-bottom: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--glass-border);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -37,16 +37,16 @@
 .habit-input {
   padding: 10px 16px;
   border-radius: 60px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--glass-border);
+  background: var(--btn-hover);
   font-size: 0.9rem;
   font-family: inherit;
-  color: #5a4a6b;
+  color: var(--text-primary);
   outline: none;
 }
 
 .habit-input:focus {
-  border-color: #CFBAE1;
+  border-color: var(--accent);
 }
 
 .habit-color-picker {
@@ -65,7 +65,7 @@
 }
 
 .color-dot.selected {
-  border-color: #5a4a6b;
+  border-color: var(--text-primary);
   transform: scale(1.15);
 }
 
@@ -73,7 +73,7 @@
   padding: 10px;
   border-radius: 60px;
   border: none;
-  background: linear-gradient(135deg, #CFBAE1, #B5EAD7);
+  background: linear-gradient(135deg, var(--accent), var(--accent-green));
   color: white;
   font-weight: 700;
   cursor: pointer;
@@ -97,9 +97,9 @@
   position: relative;
   border-radius: 20px;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--glass-border);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,12 +127,12 @@
 
 @keyframes crystalGlow {
   0% {
-    box-shadow: 0 0 20px var(--crystal-color, #CFBAE1)66,
-                0 0 40px var(--crystal-color, #CFBAE1)33;
+    box-shadow: 0 0 20px var(--crystal-color, var(--accent))66,
+                0 0 40px var(--crystal-color, var(--accent))33;
   }
   100% {
-    box-shadow: 0 0 35px var(--crystal-color, #CFBAE1)99,
-                0 0 70px var(--crystal-color, #CFBAE1)44;
+    box-shadow: 0 0 35px var(--crystal-color, var(--accent))99,
+                0 0 70px var(--crystal-color, var(--accent))44;
   }
 }
 
@@ -147,7 +147,7 @@
   justify-content: center;
   gap: 4px;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1), inset 0 1px 0 var(--glass-border);
   transition: all 0.2s;
   position: relative;
   overflow: hidden;
@@ -163,7 +163,7 @@
   background: linear-gradient(
     135deg,
     transparent 40%,
-    rgba(255, 255, 255, 0.2) 50%,
+    var(--glass-bg) 50%,
     transparent 60%
   );
   animation: shimmer 3s ease-in-out infinite;
@@ -181,7 +181,7 @@
 .crystal-name {
   font-size: 0.7rem;
   font-weight: 700;
-  color: #5a4a6b;
+  color: var(--text-primary);
   text-align: center;
 }
 
@@ -198,7 +198,7 @@
 
 .streak-count {
   font-weight: 700;
-  color: #5a4a6b;
+  color: var(--text-primary);
   font-size: 0.85rem;
 }
 
@@ -210,8 +210,8 @@
   height: 22px;
   border-radius: 50%;
   border: none;
-  background: rgba(255, 255, 255, 0.3);
-  color: #c8a8b8;
+  background: var(--btn-hover);
+  color: var(--danger);
   font-size: 0.7rem;
   cursor: pointer;
   opacity: 0;
@@ -231,6 +231,6 @@
   align-items: center;
   justify-content: center;
   padding: 3rem;
-  color: #b8a8c8;
+  color: var(--text-secondary);
   gap: 0.5rem;
 }

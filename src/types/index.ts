@@ -1,4 +1,4 @@
-export type Emotion = 'happy' | 'sleepy' | 'thirsty' | 'inspired' | 'neutral' | 'love' | 'thinking';
+export type Emotion = 'happy' | 'sleepy' | 'thirsty' | 'inspired' | 'neutral' | 'love' | 'thinking' | 'mischievous' | 'sassy' | 'sarcastic' | 'strict' | 'fauxcute';
 
 export type Tab = 'planner' | 'finances' | 'habits' | 'nutrition' | 'recipes' | 'sport';
 

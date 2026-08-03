@@ -9,16 +9,16 @@
 .nutrition-date input {
   padding: 8px 14px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--glass-border);
+  background: var(--btn-hover);
   font-size: 0.85rem;
   font-family: inherit;
-  color: #5a4a6b;
+  color: var(--text-primary);
   outline: none;
 }
 
 .nutrition-date input:focus {
-  border-color: #CFBAE1;
+  border-color: var(--accent);
 }
 
 .nutrition-summary {
@@ -26,11 +26,11 @@
   gap: 1.5rem;
   align-items: center;
   margin-bottom: 1.5rem;
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border-radius: 24px;
   padding: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--glass-border);
 }
 
 .calorie-ring {
@@ -57,13 +57,13 @@
 .ring-cal {
   font-size: 1.3rem;
   font-weight: 800;
-  color: #3a2a4b;
+  color: var(--text-primary);
   line-height: 1;
 }
 
 .ring-label {
   font-size: 0.65rem;
-  color: #8a7a9b;
+  color: var(--text-secondary);
 }
 
 .calorie-stats {
@@ -78,7 +78,7 @@
   align-items: center;
   gap: 6px;
   font-size: 0.8rem;
-  color: #5a4a6b;
+  color: var(--text-primary);
 }
 
 .cal-stat-icon {
@@ -92,7 +92,7 @@
 
 .cal-stat-val {
   font-weight: 700;
-  color: #3a2a4b;
+  color: var(--text-primary);
 }
 
 .nutrition-header {
@@ -105,30 +105,30 @@
 .nutrition-subtitle {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #5a4a6b;
+  color: var(--text-primary);
 }
 
 .nutrition-add-btn {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: linear-gradient(135deg, #FDE2E4, #CFBAE1);
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
   color: white;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(207, 186, 225, 0.3);
+  box-shadow: 0 4px 16px var(--btn-hover);
   flex-shrink: 0;
 }
 
 .meal-form {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border-radius: 24px;
   padding: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--glass-border);
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
@@ -140,11 +140,11 @@
 .meal-select {
   padding: 10px 14px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--glass-border);
+  background: var(--btn-hover);
   font-size: 0.85rem;
   font-family: inherit;
-  color: #5a4a6b;
+  color: var(--text-primary);
   outline: none;
   width: 100%;
   box-sizing: border-box;
@@ -152,7 +152,7 @@
 
 .meal-input:focus,
 .meal-select:focus {
-  border-color: #CFBAE1;
+  border-color: var(--accent);
 }
 
 .meal-form-row {
@@ -164,7 +164,7 @@
   padding: 10px;
   border-radius: 16px;
   border: none;
-  background: linear-gradient(135deg, #B5EAD7, #7ec8a0);
+  background: linear-gradient(135deg, var(--accent-green), var(--success));
   color: white;
   font-weight: 700;
   cursor: pointer;
@@ -180,17 +180,17 @@
 
 .meal-empty {
   text-align: center;
-  color: #b8a8c8;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   padding: 2rem 0;
 }
 
 .meal-group {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--glass-bg);
   backdrop-filter: blur(8px);
   border-radius: 20px;
   padding: 0.75rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--glass-bg);
 }
 
 .meal-group-header {
@@ -198,14 +198,14 @@
   justify-content: space-between;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #5a4a6b;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid var(--glass-bg);
 }
 
 .meal-group-cal {
-  color: #8a7a9b;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
@@ -229,25 +229,25 @@
 .meal-item-name {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #3a2a4b;
+  color: var(--text-primary);
 }
 
 .meal-item-macro {
   font-size: 0.7rem;
-  color: #a89bc0;
+  color: var(--text-secondary);
 }
 
 .meal-item-cal {
   font-size: 0.85rem;
   font-weight: 700;
-  color: #5a4a6b;
+  color: var(--text-primary);
   white-space: nowrap;
 }
 
 .meal-delete {
   background: none;
   border: none;
-  color: #d4b8c8;
+  color: var(--danger);
   cursor: pointer;
   opacity: 0;
   transition: all 0.2s;
