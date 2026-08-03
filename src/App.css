@@ -60,40 +60,69 @@
   z-index: 800;
 }
 
-.user-chip {
+.profile-btn {
   position: fixed;
-  bottom: 1rem;
-  left: 1rem;
+  top: 1rem;
+  right: 1rem;
   z-index: 900;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: linear-gradient(135deg, #CFBAE1, #FDE2E4);
+  color: #5a4a6b;
+  font-size: 1.15rem;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: inherit;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 8px 6px 16px;
-  border-radius: 60px;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 8px 24px rgba(200, 180, 220, 0.2);
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(200, 180, 220, 0.35);
+  transition: all 0.2s;
 }
 
-.user-chip-email {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #5a4a6b;
-  max-width: 180px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.profile-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 32px rgba(200, 180, 220, 0.5);
 }
 
-.user-chip-logout {
+.profile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 950;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(90, 74, 107, 0.3);
+  backdrop-filter: blur(6px);
+  padding: 1rem;
+}
+
+.profile-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(24px);
+  border-radius: 28px;
+  padding: 2.5rem 2rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 20px 60px rgba(255, 182, 193, 0.2);
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+}
+
+.profile-back {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
   border: none;
-  background: rgba(200, 180, 255, 0.3);
+  background: rgba(255, 255, 255, 0.3);
   color: #5a4a6b;
-  width: 28px;
-  height: 28px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  font-size: 0.95rem;
+  font-size: 1rem;
   cursor: pointer;
   font-family: inherit;
   transition: all 0.2s;
@@ -102,15 +131,88 @@
   justify-content: center;
 }
 
-.user-chip-logout:hover {
-  background: rgba(253, 226, 228, 0.7);
+.profile-back:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.profile-avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #CFBAE1, #FDE2E4);
+  color: #5a4a6b;
+  font-size: 2.2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: 0 8px 24px rgba(200, 180, 220, 0.35);
+}
+
+.profile-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #5a4a6b;
+  margin-bottom: 0.25rem;
+}
+
+.profile-email {
+  font-size: 0.85rem;
+  color: #7a6a8b;
+  margin-bottom: 1.5rem;
+  word-break: break-all;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #7a6a8b;
+}
+
+.profile-info-row strong {
+  color: #5a4a6b;
+  font-weight: 700;
+}
+
+.profile-logout {
+  width: 100%;
+  padding: 12px;
+  border-radius: 60px;
+  border: 1px solid rgba(253, 226, 228, 0.8);
+  background: rgba(253, 226, 228, 0.3);
   color: #c88a98;
-  transform: scale(1.08);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.profile-logout:hover {
+  background: rgba(253, 226, 228, 0.6);
+  color: #c88a98;
 }
 
 @media (max-width: 480px) {
-  .user-chip-email {
-    max-width: 110px;
+  .profile-btn {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 40px;
+    height: 40px;
   }
 }
 

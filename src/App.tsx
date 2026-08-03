@@ -22,6 +22,7 @@ import Recipes from './components/Recipes';
 import Sport from './components/Sport';
 import LofiPlayer from './components/LofiPlayer';
 import Tutorial from './components/Tutorial';
+import Profile from './components/Profile';
 import './App.css';
 
 const WATER_INTERVALS = [
@@ -52,6 +53,7 @@ function AppInner() {
   const [robotEmotion, setRobotEmotion] = useState<Emotion>('neutral');
   const [robotSpeech, setRobotSpeech] = useState<string | undefined>();
   const [showTutorial, setShowTutorial] = useSynced('tutorial_done', true);
+  const [showProfile, setShowProfile] = useState(false);
   const [waterInterval, setWaterInterval] = useSynced<number | null>('water_interval', null);
   const [eyeInterval, setEyeInterval] = useSynced<number | null>('eye_interval', null);
   const [waterTimer, setWaterTimer] = useState(0);
@@ -224,6 +226,14 @@ function AppInner() {
         <LofiPlayer />
       </div>
 
+      <button
+        className="profile-btn"
+        onClick={() => setShowProfile(true)}
+        title="Мой профиль"
+      >
+        {(user.email?.[0] || 'П').toUpperCase()}
+      </button>
+
       <nav className="app-nav">
         {tabs.map(tab => (
           <motion.button
@@ -340,6 +350,16 @@ function AppInner() {
       </main>
 
       <AnimatePresence>
+        {showProfile && (
+          <Profile
+            user={user}
+            onBack={() => setShowProfile(false)}
+            onLogout={logout}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
         {showWaterAlert && (
           <motion.div
             className="alert-overlay"
@@ -400,13 +420,6 @@ function AppInner() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <div className="user-chip">
-        <span className="user-chip-email">{user.email}</span>
-        <button className="user-chip-logout" onClick={() => logout()} title="Выйти из аккаунта">
-          ⎋
-        </button>
-      </div>
     </div>
   );
 }
