@@ -338,14 +338,27 @@
 }
 
 .robot-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 32px;
+  padding: 1.1rem 1.1rem 0.9rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  transition: all 0.6s ease;
 }
 
 .robot-svg {
   display: block;
   width: 180px;
   height: 190px;
-  filter: drop-shadow(0 8px 24px rgba(200, 150, 220, 0.25));
+  filter: drop-shadow(0 12px 40px rgba(200, 150, 220, 0.2));
+  transition: filter 0.6s ease;
+  position: relative;
+  z-index: 2;
 }
 
 @media (min-width: 1024px) {
@@ -353,6 +366,16 @@
     width: 220px;
     height: 230px;
   }
+}
+
+.dark-theme .robot-card {
+  border-color: rgba(180, 75, 142, 0.2);
+  box-shadow: 0 20px 60px rgba(180, 75, 142, 0.1),
+              0 0 80px rgba(180, 75, 142, 0.03);
+}
+
+.dark-theme .robot-svg {
+  filter: drop-shadow(0 12px 40px rgba(180, 75, 142, 0.2));
 }
 
 .robot-speech {
@@ -635,64 +658,139 @@
 /* Помощник: рожки и хвостик */
 .horns {
   position: absolute;
-  top: -6px;
+  top: -26px;
   left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
+  transform: translateX(-50%) scale(0.8);
+  width: 96px;
+  height: 55px;
+  z-index: 3;
+  opacity: 0;
   pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.dark-theme .horns {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.horns path {
+  fill: #B44B8E;
+  stroke: #D060B0;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 12px rgba(180, 75, 142, 0.3));
+  transition: filter 0.6s ease;
+}
+
+.dark-theme .horns path {
+  animation: hornGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes hornGlow {
+  0% { filter: drop-shadow(0 0 8px rgba(180, 75, 142, 0.3)); }
+  100% { filter: drop-shadow(0 0 28px rgba(180, 75, 142, 0.7)); }
 }
 
 .tail {
   position: absolute;
-  bottom: -42px;
-  right: -34px;
-  z-index: 5;
+  bottom: -16px;
+  right: -36px;
+  width: 72px;
+  height: 96px;
+  z-index: 1;
+  opacity: 0;
   pointer-events: none;
-}
-
-/* По умолчанию скрыты */
-.horns, .tail {
-  display: none;
-}
-
-.dark-theme .horns {
-  display: block;
-  animation: floatHorns 3s ease-in-out infinite;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateX(20px) scale(0.7);
 }
 
 .dark-theme .tail {
-  display: block;
-  animation: floatTail 3s ease-in-out infinite;
+  opacity: 1;
+  transform: translateX(0) scale(1);
 }
 
-@keyframes floatHorns {
-  0%, 100% { transform: translateX(-50%) translateY(0) rotate(-2deg); }
-  50% { transform: translateX(-50%) translateY(-8px) rotate(2deg); }
+.tail .tail-line {
+  stroke: #00D4FF;
+  stroke-width: 4;
+  fill: none;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.3));
+  transition: filter 0.6s ease;
 }
 
-@keyframes floatTail {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-8px) rotate(2deg); }
+.dark-theme .tail .tail-line {
+  animation: tailGlow 3s ease-in-out infinite;
 }
 
-/* Свечение рожек */
-.dark-theme .horns path {
-  filter: drop-shadow(0 0 12px rgba(180, 75, 142, 0.6));
-  animation: hornGlow 2s ease-in-out infinite alternate;
+@keyframes tailGlow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.2)); }
+  50% { filter: drop-shadow(0 0 24px rgba(0, 212, 255, 0.5)); }
 }
 
-@keyframes hornGlow {
-  0% { filter: drop-shadow(0 0 8px rgba(180, 75, 142, 0.4)); }
-  100% { filter: drop-shadow(0 0 20px rgba(180, 75, 142, 0.8)); }
+.tail .tail-tip {
+  fill: #B44B8E;
+  filter: drop-shadow(0 0 12px rgba(180, 75, 142, 0.4));
+  transition: fill 0.6s ease, filter 0.6s ease;
 }
 
-/* Неоновое свечение робота в тёмной теме */
-.dark-theme .robot-svg {
-  filter: drop-shadow(0 8px 24px rgba(180, 75, 142, 0.35));
+.dark-theme .tail .tail-tip {
+  animation: tipGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes tipGlow {
+  0% { filter: drop-shadow(0 0 8px rgba(180, 75, 142, 0.3)); }
+  100% { filter: drop-shadow(0 0 24px rgba(180, 75, 142, 0.7)); }
+}
+
+/* Статус-пилюля под помощником */
+.robot-status {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--btn-bg);
+  backdrop-filter: blur(8px);
+  padding: 6px 20px;
+  border-radius: 60px;
+  border: 1px solid var(--glass-border);
+  transition: all 0.6s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.status-emoji {
+  font-size: 1rem;
+}
+
+.dark-theme .robot-status {
+  color: #c8b0d8;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(180, 75, 142, 0.15);
 }
 
 .dark-theme .speech-text {
   text-shadow: var(--text-glow);
+}
+
+@media (max-width: 480px) {
+  .horns {
+    top: -18px;
+    width: 68px;
+    height: 40px;
+  }
+  .tail {
+    bottom: -12px;
+    right: -24px;
+    width: 54px;
+    height: 72px;
+  }
+  .robot-status {
+    font-size: 0.75rem;
+    padding: 5px 16px;
+  }
 }
 
 @media (max-width: 480px) {
