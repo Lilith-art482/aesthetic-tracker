@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import { useSynced } from '../hooks/useSynced';
 import './LofiPlayer.css';
 
 type SoundId = 'rain' | 'piano' | 'evening' | 'nature' | 'coffee' | 'fire';
@@ -28,22 +29,8 @@ interface SavedState {
   pos: { x: number; y: number } | null;
 }
 
-function loadState(): SavedState | null {
-  try {
-    const raw = localStorage.getItem('lofi_player');
-    return raw ? JSON.parse(raw) : null;
-  } catch {
-    return null;
-  }
-}
-
-function saveState(s: SavedState) {
-  try {
-    localStorage.setItem('lofi_player', JSON.stringify(s));
-  } catch { }
-}
-
 export default function LofiPlayer() {
+  const [saved, setSaved] = useSynced<SavedState | null>('lofi_player', null);
   const [currentSound, setCurrentSound] = useState<SoundId>('rain');
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.25);
@@ -110,35 +97,42 @@ export default function LofiPlayer() {
     }
   }, []);
 
-  // Restore saved state on mount
+  // Restore saved state (local first, cloud may override later)
+  const timeoutRef = useRef<number | undefined>(undefined);
+
   useEffect(() => {
-    const saved = loadState();
-    if (saved) {
-      setIsCompact(saved.isCompact);
-      setVolume(saved.volume);
-      setCurrentSound(saved.currentSound);
-      setPos(saved.pos ?? null);
-      lastPosRef.current = saved.pos ?? null;
+    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    if (!saved) {
       setAudioReady(true);
-      if (saved.isPlaying) {
-        setTimeout(() => play(saved.currentSound, saved.volume), 500);
-      }
-    } else {
-      setAudioReady(true);
-      setTimeout(() => {
+      timeoutRef.current = window.setTimeout(() => {
         play('rain', 0.25);
       }, 1500);
+      return;
+    }
+    setIsCompact(saved.isCompact);
+    setVolume(saved.volume);
+    setCurrentSound(saved.currentSound);
+    setPos(saved.pos ?? null);
+    lastPosRef.current = saved.pos ?? null;
+    setAudioReady(true);
+    if (saved.isPlaying && !audioRef.current) {
+      timeoutRef.current = window.setTimeout(() => play(saved.currentSound, saved.volume), 500);
     }
     return () => {
-      stop();
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [saved, play]);
+
+  // Stop audio on unmount
+  useEffect(() => {
+    return () => stop();
+  }, [stop]);
 
   // Persist state
   useEffect(() => {
     if (!audioReady) return;
-    saveState({ currentSound, isPlaying, volume, isCompact, pos: lastPosRef.current });
-  }, [currentSound, isPlaying, volume, isCompact, audioReady]);
+    setSaved({ currentSound, isPlaying, volume, isCompact, pos: lastPosRef.current });
+  }, [currentSound, isPlaying, volume, isCompact, audioReady, setSaved]);
 
   const soundInfo = SOUNDS.find(s => s.id === currentSound)!;
 
@@ -186,12 +180,12 @@ export default function LofiPlayer() {
     if (drag && e.pointerId === drag.pointerId) {
       if (drag.moved) {
         movedRef.current = true;
-        saveState({ currentSound, isPlaying, volume, isCompact, pos: lastPosRef.current });
+        setSaved({ currentSound, isPlaying, volume, isCompact, pos: lastPosRef.current });
       }
       dragRef.current = null;
     }
     setIsDragging(false);
-  }, [currentSound, isPlaying, volume, isCompact]);
+  }, [currentSound, isPlaying, volume, isCompact, setSaved]);
 
   return (
     <motion.div
