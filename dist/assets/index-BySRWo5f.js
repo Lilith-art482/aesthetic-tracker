@@ -111,7 +111,8 @@ Total Duration: ${c-l}ms`),J.resolve({didRun:!0,sequenceNumbersCollected:r,targe
       <circle cx="130" cy="125" r="8" fill="#7928CA" opacity="0.4" />
       <circle cx="270" cy="125" r="8" fill="#7928CA" opacity="0.4" />
       <path d="M 185 170 Q 200 190 215 170" stroke="#B44B8E" stroke-width="4" fill="none" stroke-linecap="round" />
-      <path d="M 195 175 L 198 183 L 201 175" fill="#fff" opacity="0.6" />
+      <path d="M 190 175 L 195 185 L 200 175" fill="#fff" opacity="0.6" />
+      <path d="M 205 175 L 210 185 L 215 175" fill="#fff" opacity="0.6" />
       <path d="M 145 126 L 149 123 L 153 126" fill="#00D4FF" opacity="0.7" />
       <path d="M 247 126 L 251 123 L 255 126" fill="#00D4FF" opacity="0.7" />
       <path d="M 130 115 L 160 112" stroke="#B44B8E" stroke-width="3" stroke-linecap="round" />
