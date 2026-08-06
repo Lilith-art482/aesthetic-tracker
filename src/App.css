@@ -699,7 +699,7 @@
 
 .tail {
   position: absolute;
-  bottom: -16px;
+  bottom: -6px;
   right: -36px;
   width: 72px;
   height: 96px;
@@ -789,7 +789,7 @@
     height: 40px;
   }
   .tail {
-    bottom: -12px;
+    bottom: -6px;
     right: -24px;
     width: 54px;
     height: 72px;
