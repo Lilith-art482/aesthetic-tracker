@@ -176,9 +176,9 @@ const DARK_FACES: Record<Emotion, FaceConfig> = {
     extra: `
       <circle cx="130" cy="125" r="8" fill="#7928CA" opacity="0.4" />
       <circle cx="270" cy="125" r="8" fill="#7928CA" opacity="0.4" />
+      <path d="M 192 175 L 195 196 L 198 175" fill="#fff" opacity="0.6" />
+      <path d="M 202 175 L 205 196 L 208 175" fill="#fff" opacity="0.6" />
       <path d="M 185 170 Q 200 190 215 170" stroke="#B44B8E" stroke-width="4" fill="none" stroke-linecap="round" />
-      <path d="M 190 175 L 195 185 L 200 175" fill="#fff" opacity="0.6" />
-      <path d="M 205 175 L 210 185 L 215 175" fill="#fff" opacity="0.6" />
       <path d="M 145 126 L 149 123 L 153 126" fill="#00D4FF" opacity="0.7" />
       <path d="M 247 126 L 251 123 L 255 126" fill="#00D4FF" opacity="0.7" />
       <path d="M 130 115 L 160 112" stroke="#B44B8E" stroke-width="3" stroke-linecap="round" />
@@ -422,15 +422,17 @@ function drawRobotSVG(emotion: Emotion, blink: boolean, dark: boolean): string {
     <rect x="80" y="60" width="240" height="200" rx="24" fill="url(#screenGrad)" opacity="0.4" />
     <ellipse cx="140" cy="85" rx="60" ry="20" fill="white" opacity="${glassGlare}" transform="rotate(-20 140 85)" />
     <ellipse cx="280" cy="230" rx="40" ry="12" fill="white" opacity="${glassGlare2}" transform="rotate(-25 280 230)" />
-    <circle cx="145" cy="135" r="30" fill="url(#eyeGlow)" />
-    <circle cx="255" cy="135" r="30" fill="url(#eyeGlow)" />
-    <path d="${eyePath(lx, eyeY, 22, leftOpen)}" fill="${em.eyeColor}" stroke="${eyeStroke}" stroke-width="1.5" />
-    <circle cx="${lx + em.leftPupilX}" cy="${eyeY + em.leftPupilY}" r="${em.pupilSize}" fill="${em.irisColor}" opacity="0.9" />
-    <circle cx="${lx + em.leftPupilX - 4}" cy="${eyeY + em.leftPupilY - 5}" r="5" fill="white" opacity="${highlight}" />
-    <path d="${eyePath(rx, eyeY, 22, rightOpen)}" fill="${em.eyeColor}" stroke="${eyeStroke}" stroke-width="1.5" />
-    <circle cx="${rx + em.rightPupilX}" cy="${eyeY + em.rightPupilY}" r="${em.pupilSize}" fill="${em.irisColor}" opacity="0.9" />
-    <circle cx="${rx + em.rightPupilX - 4}" cy="${eyeY + em.rightPupilY - 5}" r="5" fill="white" opacity="${highlight}" />
-    ${em.extra}
+    <g id="face">
+      <circle cx="145" cy="135" r="30" fill="url(#eyeGlow)" />
+      <circle cx="255" cy="135" r="30" fill="url(#eyeGlow)" />
+      <path d="${eyePath(lx, eyeY, 22, leftOpen)}" fill="${em.eyeColor}" stroke="${eyeStroke}" stroke-width="1.5" />
+      <circle cx="${lx + em.leftPupilX}" cy="${eyeY + em.leftPupilY}" r="${em.pupilSize}" fill="${em.irisColor}" opacity="0.9" />
+      <circle cx="${lx + em.leftPupilX - 4}" cy="${eyeY + em.leftPupilY - 5}" r="5" fill="white" opacity="${highlight}" />
+      <path d="${eyePath(rx, eyeY, 22, rightOpen)}" fill="${em.eyeColor}" stroke="${eyeStroke}" stroke-width="1.5" />
+      <circle cx="${rx + em.rightPupilX}" cy="${eyeY + em.rightPupilY}" r="${em.pupilSize}" fill="${em.irisColor}" opacity="0.9" />
+      <circle cx="${rx + em.rightPupilX - 4}" cy="${eyeY + em.rightPupilY - 5}" r="5" fill="white" opacity="${highlight}" />
+      ${em.extra}
+    </g>
     <rect x="160" y="305" width="80" height="12" rx="6" fill="${bodyColor}" stroke="${bodyStroke}" stroke-width="2" />
     <rect x="140" y="318" width="120" height="16" rx="8" fill="${bodyColor}" stroke="${bodyStroke}" stroke-width="2" />
     <line x1="200" y1="40" x2="200" y2="20" stroke="${antennaColor}" stroke-width="3" stroke-linecap="round" />

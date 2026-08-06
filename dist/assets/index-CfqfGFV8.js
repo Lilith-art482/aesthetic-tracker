@@ -110,9 +110,9 @@ Total Duration: ${c-l}ms`),J.resolve({didRun:!0,sequenceNumbersCollected:r,targe
     `}},tI={happy:{leftOpen:.95,rightOpen:.95,leftPupilX:0,leftPupilY:-2,rightPupilX:0,rightPupilY:-2,pupilSize:18,irisColor:`#B44B8E`,eyeColor:`#1a0a1a`,extra:`
       <circle cx="130" cy="125" r="8" fill="#7928CA" opacity="0.4" />
       <circle cx="270" cy="125" r="8" fill="#7928CA" opacity="0.4" />
+      <path d="M 192 175 L 195 196 L 198 175" fill="#fff" opacity="0.6" />
+      <path d="M 202 175 L 205 196 L 208 175" fill="#fff" opacity="0.6" />
       <path d="M 185 170 Q 200 190 215 170" stroke="#B44B8E" stroke-width="4" fill="none" stroke-linecap="round" />
-      <path d="M 190 175 L 195 185 L 200 175" fill="#fff" opacity="0.6" />
-      <path d="M 205 175 L 210 185 L 215 175" fill="#fff" opacity="0.6" />
       <path d="M 145 126 L 149 123 L 153 126" fill="#00D4FF" opacity="0.7" />
       <path d="M 247 126 L 251 123 L 255 126" fill="#00D4FF" opacity="0.7" />
       <path d="M 130 115 L 160 112" stroke="#B44B8E" stroke-width="3" stroke-linecap="round" />
@@ -213,15 +213,17 @@ Total Duration: ${c-l}ms`),J.resolve({didRun:!0,sequenceNumbersCollected:r,targe
     <rect x="80" y="60" width="240" height="200" rx="24" fill="url(#screenGrad)" opacity="0.4" />
     <ellipse cx="140" cy="85" rx="60" ry="20" fill="white" opacity="${g}" transform="rotate(-20 140 85)" />
     <ellipse cx="280" cy="230" rx="40" ry="12" fill="white" opacity="${_}" transform="rotate(-25 280 230)" />
-    <circle cx="145" cy="135" r="30" fill="url(#eyeGlow)" />
-    <circle cx="255" cy="135" r="30" fill="url(#eyeGlow)" />
-    <path d="${iI(145,135,22,a)}" fill="${i.eyeColor}" stroke="${m}" stroke-width="1.5" />
-    <circle cx="${145+i.leftPupilX}" cy="${135+i.leftPupilY}" r="${i.pupilSize}" fill="${i.irisColor}" opacity="0.9" />
-    <circle cx="${145+i.leftPupilX-4}" cy="${135+i.leftPupilY-5}" r="5" fill="white" opacity="${h}" />
-    <path d="${iI(255,135,22,o)}" fill="${i.eyeColor}" stroke="${m}" stroke-width="1.5" />
-    <circle cx="${255+i.rightPupilX}" cy="${135+i.rightPupilY}" r="${i.pupilSize}" fill="${i.irisColor}" opacity="0.9" />
-    <circle cx="${255+i.rightPupilX-4}" cy="${135+i.rightPupilY-5}" r="5" fill="white" opacity="${h}" />
-    ${i.extra}
+    <g id="face">
+      <circle cx="145" cy="135" r="30" fill="url(#eyeGlow)" />
+      <circle cx="255" cy="135" r="30" fill="url(#eyeGlow)" />
+      <path d="${iI(145,135,22,a)}" fill="${i.eyeColor}" stroke="${m}" stroke-width="1.5" />
+      <circle cx="${145+i.leftPupilX}" cy="${135+i.leftPupilY}" r="${i.pupilSize}" fill="${i.irisColor}" opacity="0.9" />
+      <circle cx="${145+i.leftPupilX-4}" cy="${135+i.leftPupilY-5}" r="5" fill="white" opacity="${h}" />
+      <path d="${iI(255,135,22,o)}" fill="${i.eyeColor}" stroke="${m}" stroke-width="1.5" />
+      <circle cx="${255+i.rightPupilX}" cy="${135+i.rightPupilY}" r="${i.pupilSize}" fill="${i.irisColor}" opacity="0.9" />
+      <circle cx="${255+i.rightPupilX-4}" cy="${135+i.rightPupilY-5}" r="5" fill="white" opacity="${h}" />
+      ${i.extra}
+    </g>
     <rect x="160" y="305" width="80" height="12" rx="6" fill="${l}" stroke="${u}" stroke-width="2" />
     <rect x="140" y="318" width="120" height="16" rx="8" fill="${l}" stroke="${u}" stroke-width="2" />
     <line x1="200" y1="40" x2="200" y2="20" stroke="${v}" stroke-width="3" stroke-linecap="round" />
