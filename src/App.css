@@ -332,6 +332,12 @@
   animation: float 3s ease-in-out infinite;
 }
 
+/* Сам блок компьютера (монитор): рожки и хвостик
+   позиционируются только относительно него */
+.robot-monitor {
+  position: relative;
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(-1deg); }
   50% { transform: translateY(-8px) rotate(1deg); }
@@ -658,7 +664,7 @@
 /* Помощник: рожки и хвостик */
 .horns {
   position: absolute;
-  top: -26px;
+  top: -10px;
   left: 50%;
   transform: translateX(-50%) scale(0.8);
   width: 96px;
@@ -778,7 +784,7 @@
 
 @media (max-width: 480px) {
   .horns {
-    top: -18px;
+    top: -6px;
     width: 68px;
     height: 40px;
   }
