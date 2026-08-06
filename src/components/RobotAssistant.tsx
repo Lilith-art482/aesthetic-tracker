@@ -498,17 +498,6 @@ export default function RobotAssistant({ emotion, speechText, className, dark = 
               <path d="M38 60 Q28 35 42 18 Q46 28 46 45 Q42 55 38 60Z" fill="rgba(255,255,255,0.15)" />
               <path d="M102 60 Q112 35 98 18 Q94 28 94 45 Q98 55 102 60Z" fill="rgba(255,255,255,0.15)" />
             </svg>
-            <svg className="tail" viewBox="0 0 120 160" aria-hidden="true">
-              <path className="tail-line" d="M20 150 Q40 100 30 60 Q20 20 60 0 Q80 30 70 60 Q60 90 80 100">
-                <animate attributeName="d"
-                  values="M20 150 Q40 100 30 60 Q20 20 60 0 Q80 30 70 60 Q60 90 80 100;
-                          M20 150 Q50 90 20 50 Q15 15 65 5 Q85 35 65 65 Q50 95 70 100;
-                          M20 150 Q40 100 30 60 Q20 20 60 0 Q80 30 70 60 Q60 90 80 100"
-                  dur="3s" repeatCount="indefinite" />
-              </path>
-              <path className="tail-tip" d="M75 95 L88 82 L95 92 L82 105 Z" />
-              <path d="M80 90 L83 87 L86 89 L83 94 Z" fill="rgba(255,255,255,0.2)" />
-            </svg>
           </div>
         </div>
         <div className="robot-status">
