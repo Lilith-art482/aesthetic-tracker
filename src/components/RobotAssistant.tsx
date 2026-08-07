@@ -177,8 +177,6 @@ const DARK_FACES: Record<Emotion, FaceConfig> = {
       <circle cx="130" cy="125" r="8" fill="#7928CA" opacity="0.4" />
       <circle cx="270" cy="125" r="8" fill="#7928CA" opacity="0.4" />
       <g id="mouth">
-        <path d="M 192 182 L 196 196 L 200 182" fill="#fff" opacity="1" />
-        <path d="M 200 182 L 204 196 L 208 182" fill="#fff" opacity="1" />
         <path d="M 185 170 Q 200 190 215 170" stroke="#B44B8E" stroke-width="4" fill="none" stroke-linecap="round" />
       </g>
       <path d="M 145 126 L 149 123 L 153 126" fill="#00D4FF" opacity="0.7" />
