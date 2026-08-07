@@ -111,9 +111,9 @@ Total Duration: ${c-l}ms`),J.resolve({didRun:!0,sequenceNumbersCollected:r,targe
       <circle cx="130" cy="125" r="8" fill="#7928CA" opacity="0.4" />
       <circle cx="270" cy="125" r="8" fill="#7928CA" opacity="0.4" />
       <g id="mouth">
-        <g id="teeth-wrapper">
-          <path d="M 190 183 L 194 196 L 198 183 Z" fill="#B44B8E" opacity="1" />
-          <path d="M 202 183 L 206 196 L 210 183 Z" fill="#B44B8E" opacity="1" />
+        <g id="teeth-wrapper" transform="translate(0, -3)">
+          <path d="M 190 183 L 194 200 L 198 183 Z" fill="#B44B8E" opacity="1" />
+          <path d="M 202 183 L 206 200 L 210 183 Z" fill="#B44B8E" opacity="1" />
         </g>
         <path d="M 185 170 Q 200 190 215 170" stroke="#B44B8E" stroke-width="4" fill="none" stroke-linecap="round" />
       </g>
