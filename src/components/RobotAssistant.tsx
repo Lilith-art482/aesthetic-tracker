@@ -343,36 +343,6 @@ const DARK_FACES: Record<Emotion, FaceConfig> = {
   }
 };
 
-const LIGHT_EMOTION_NAMES: Record<Emotion, string> = {
-  happy: '😊 Счастливый',
-  sleepy: '😴 Сонный',
-  thirsty: '💧 Хочет пить',
-  inspired: '✨ Вдохновлён',
-  neutral: '😐 Нейтральный',
-  love: '😍 Влюблён',
-  thinking: '🤔 Задумчивый',
-  mischievous: '😏 Хитрый',
-  sassy: '🔥 Дерзкий',
-  sarcastic: '🙄 Саркастичный',
-  strict: '😠 Строгий',
-  fauxcute: '🙃 Фальшиво-милый',
-};
-
-const DARK_EMOTION_NAMES: Record<Emotion, string> = {
-  happy: '😈 Дерзкий',
-  sleepy: '😴 Сонный',
-  thirsty: '💧 Хочет пить',
-  inspired: '🔥 Вдохновлён',
-  neutral: '😐 Нейтральный',
-  love: '😍 Влюблён',
-  thinking: '🤔 Задумчивый',
-  mischievous: '😏 Хитрый',
-  sassy: '😈 Дерзкий',
-  sarcastic: '🙄 Саркастичный',
-  strict: '😠 Строгий',
-  fauxcute: '🙃 Фальшиво-милый',
-};
-
 function eyePath(cx: number, cy: number, r: number, open: number) {
   const top = cy - r * open;
   const bottom = cy + r * open;
@@ -483,11 +453,6 @@ export default function RobotAssistant({ emotion, speechText, className, dark = 
     draw(false);
   }, [dark, draw]);
 
-  const status = dark ? DARK_EMOTION_NAMES : LIGHT_EMOTION_NAMES;
-  const statusText = status[emotion] || '😊 Счастливый';
-  const [emoji, ...rest] = statusText.split(' ');
-  const statusLabel = rest.join(' ');
-
   return (
     <div className={`robot-assistant ${className || ''}`}>
       <div className="robot-card">
@@ -506,10 +471,6 @@ export default function RobotAssistant({ emotion, speechText, className, dark = 
               <path d="M102 60 Q112 35 98 18 Q94 28 94 45 Q98 55 102 60Z" fill="rgba(255,255,255,0.15)" />
             </svg>
           </div>
-        </div>
-        <div className="robot-status">
-          <span className="status-emoji">{emoji}</span>
-          <span>{statusLabel}</span>
         </div>
       </div>
     </div>
