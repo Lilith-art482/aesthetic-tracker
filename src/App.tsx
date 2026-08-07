@@ -97,7 +97,7 @@ function AppInner() {
         setTimeout(() => {
           setRobotEmotion('neutral');
           setRobotSpeech(undefined);
-        }, 4000);
+        }, 6000);
       }
     }, IDLE_TIMEOUT);
   }, [robotEmotion, pickPhraseText]);
@@ -106,7 +106,7 @@ function AppInner() {
     setRobotEmotion(emotion);
     if (speech) {
       setRobotSpeech(speech);
-      setTimeout(() => setRobotSpeech(undefined), 3000);
+      setTimeout(() => setRobotSpeech(undefined), 5000);
     } else {
       setRobotSpeech(undefined);
     }
