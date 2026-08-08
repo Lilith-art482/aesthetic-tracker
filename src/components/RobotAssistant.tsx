@@ -455,13 +455,13 @@ export default function RobotAssistant({ emotion, speechText, className, dark = 
 
   return (
     <div className={`robot-assistant ${className || ''}`}>
+      {speechText && (
+        <div className="robot-speech">
+          <span className="speech-text">{speechText}</span>
+        </div>
+      )}
       <div className="robot-card">
         <div className="robot-wrapper">
-          {speechText && (
-            <div className="robot-speech">
-              <span className="speech-text">{speechText}</span>
-            </div>
-          )}
           <div className="robot-monitor">
             <svg ref={svgRef} className="robot-svg" viewBox="0 0 400 420" />
             <svg className="horns" viewBox="0 0 140 80" aria-hidden="true">
