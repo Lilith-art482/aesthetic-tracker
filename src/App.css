@@ -63,7 +63,7 @@
 .avatar-btn {
   position: fixed;
   top: 1rem;
-  right: calc(1rem + 108px);
+  right: 1rem;
   z-index: 900;
   width: 46px;
   height: 46px;
@@ -496,7 +496,7 @@
   }
   .avatar-btn {
     top: 0.5rem;
-    right: calc(0.5rem + 96px);
+    right: 0.5rem;
     width: 40px;
     height: 40px;
     font-size: 1rem;
