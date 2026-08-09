@@ -460,17 +460,15 @@ export default function RobotAssistant({ emotion, speechText, className, dark = 
           <span className="speech-text">{speechText}</span>
         </div>
       )}
-      <div className="robot-card">
-        <div className="robot-wrapper">
-          <div className="robot-monitor">
-            <svg ref={svgRef} className="robot-svg" viewBox="0 0 400 420" />
-            <svg className="horns" viewBox="0 0 140 80" aria-hidden="true">
-              <path d="M35 70 Q15 30 40 5 Q48 20 50 40 Q42 55 35 70Z" />
-              <path d="M105 70 Q125 30 100 5 Q92 20 90 40 Q98 55 105 70Z" />
-              <path d="M38 60 Q28 35 42 18 Q46 28 46 45 Q42 55 38 60Z" fill="rgba(255,255,255,0.15)" />
-              <path d="M102 60 Q112 35 98 18 Q94 28 94 45 Q98 55 102 60Z" fill="rgba(255,255,255,0.15)" />
-            </svg>
-          </div>
+<div className="robot-wrapper">
+        <div className="robot-monitor">
+          <svg ref={svgRef} className="robot-svg" viewBox="0 0 400 420" />
+          <svg className="horns" viewBox="0 0 140 80" aria-hidden="true">
+            <path d="M35 70 Q15 30 40 5 Q48 20 50 40 Q42 55 35 70Z" />
+            <path d="M105 70 Q125 30 100 5 Q92 20 90 40 Q98 55 105 70Z" />
+            <path d="M38 60 Q28 35 42 18 Q46 28 46 45 Q42 55 38 60Z" fill="rgba(255,255,255,0.15)" />
+            <path d="M102 60 Q112 35 98 18 Q94 28 94 45 Q98 55 102 60Z" fill="rgba(255,255,255,0.15)" />
+          </svg>
         </div>
       </div>
     </div>
