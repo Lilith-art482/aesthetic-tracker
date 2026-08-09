@@ -146,3 +146,24 @@ export interface WorkoutEntry {
   date: string;
   createdAt: string;
 }
+
+export type ReminderPriority = 'high' | 'medium' | 'low';
+export type ReminderMode = 'timer' | 'time';
+
+export interface Reminder {
+  id: string;
+  name: string;
+  priority: ReminderPriority;
+  mode: ReminderMode;
+  timerMinutes?: number;
+  time?: string;
+  lastFiredAt?: number;
+  active: boolean;
+  createdAt: string;
+}
+
+export const REMINDER_PRIORITIES: { value: ReminderPriority; label: string; icon: string }[] = [
+  { value: 'high', label: 'Высокий', icon: '🔥' },
+  { value: 'medium', label: 'Средний', icon: '⚡' },
+  { value: 'low', label: 'Низкий', icon: '🍃' },
+];

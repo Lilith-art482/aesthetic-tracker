@@ -11,6 +11,7 @@ import {
 } from '@phosphor-icons/react';
 import type { Emotion, Tab } from './types';
 import { useSynced } from './hooks/useSynced';
+import { sendNotification } from './utils/notifications';
 import { useAuth, AuthProvider } from './context/AuthContext';
 import AuthScreen from './components/AuthScreen';
 import RobotAssistant from './components/RobotAssistant';
@@ -109,6 +110,7 @@ function AppInner() {
       if (remaining <= 0) {
         setShowWaterAlert(true);
         setEmotion('thirsty', pickPhraseText('waterReminder'));
+        sendNotification('Пора пить воду! 💧', 'Не забывай увлажнять себя 💙');
         setWaterTimer(Date.now());
       } else {
         const m = Math.floor(remaining / 60);
@@ -122,6 +124,7 @@ function AppInner() {
       if (remaining <= 0) {
         setShowEyeAlert(true);
         setEmotion('sleepy', pickPhraseText('eyeReminder'));
+        sendNotification('Время разминки! 👁️', 'Сделай упражнения для глаз или спины 🧘');
         setEyeTimer(Date.now());
       } else {
         const m = Math.floor(remaining / 60);
