@@ -11,7 +11,11 @@ import {
 } from '@phosphor-icons/react';
 import type { Emotion, Tab } from './types';
 import { useSynced } from './hooks/useSynced';
-import { sendNotification } from './utils/notifications';
+import {
+  notificationsSupported,
+  requestNotificationPermission,
+  sendNotification,
+} from './utils/notifications';
 import { useAuth, AuthProvider } from './context/AuthContext';
 import AuthScreen from './components/AuthScreen';
 import RobotAssistant from './components/RobotAssistant';
@@ -58,6 +62,7 @@ function AppInner() {
   const [eyeTimer, setEyeTimer] = useState(0);
   const [showWaterAlert, setShowWaterAlert] = useState(false);
   const [showEyeAlert, setShowEyeAlert] = useState(false);
+  const [showNotifPrompt, setShowNotifPrompt] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ water: '', eye: '' });
 
   const idleTimerRef = useRef<number | undefined>(undefined);
@@ -201,6 +206,25 @@ function AppInner() {
     }, 1200);
     return () => clearTimeout(t);
   }, [user, showTutorial, pickPhraseText, setEmotion]);
+
+  useEffect(() => {
+    if (!user || showTutorial) return;
+    if (!notificationsSupported() || Notification.permission !== 'default') return;
+    const t = window.setTimeout(() => setShowNotifPrompt(true), 2500);
+    return () => clearTimeout(t);
+  }, [user, showTutorial]);
+
+  const allowNotifications = async () => {
+    try {
+      const permission = await requestNotificationPermission();
+      if (permission === 'granted') {
+        sendNotification('Уведомления включены!', 'Теперь трекер будет напоминать тебе обо всём 💌');
+      }
+    } catch {
+      // ignore
+    }
+    setShowNotifPrompt(false);
+  };
 
   const toggleTheme = () => {
     const next = !isDark;
@@ -351,6 +375,39 @@ function AppInner() {
             onBack={() => setShowProfile(false)}
             onLogout={logout}
           />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showNotifPrompt && (
+          <motion.div
+            className="alert-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="alert-card"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+            >
+              <span className="alert-icon">🔔</span>
+              <h3>Показывать уведомления?</h3>
+              <p>
+                Разреши трекеру присылать уведомления на устройство — тогда напоминания придут,
+                даже когда ты на другом сайте или в другом приложении 💌
+              </p>
+              <div className="alert-actions">
+                <button className="alert-btn primary" onClick={allowNotifications}>
+                  Разрешить
+                </button>
+                <button className="alert-btn secondary" onClick={() => setShowNotifPrompt(false)}>
+                  Не сейчас
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
 

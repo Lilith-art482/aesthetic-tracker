@@ -10,6 +10,18 @@
   margin-top: 1rem;
 }
 
+.rem-notif-hint {
+  margin-top: 0.5rem;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-hover);
+  color: var(--danger);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
 @media (max-width: 768px) {
   .reminders-layout {
     grid-template-columns: 1fr;

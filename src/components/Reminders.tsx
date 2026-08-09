@@ -4,11 +4,7 @@ import { Bell, Plus, Trash, Timer, Clock, Play, Pause } from '@phosphor-icons/re
 import type { Reminder, ReminderMode, ReminderPriority } from '../types';
 import { REMINDER_PRIORITIES } from '../types';
 import { useSynced } from '../hooks/useSynced';
-import {
-  notificationsSupported,
-  requestNotificationPermission,
-  sendNotification,
-} from '../utils/notifications';
+import { getNotificationPermission, sendNotification } from '../utils/notifications';
 import './Reminders.css';
 
 const WATER_INTERVALS = [
@@ -74,14 +70,8 @@ export default function Reminders({
   const [timerMinutes, setTimerMinutes] = useState(30);
   const [timeValue, setTimeValue] = useState('08:00');
   const [firedReminder, setFiredReminder] = useState<Reminder | null>(null);
-  const [showPermModal, setShowPermModal] = useState(false);
   const [, setTick] = useState(0);
-
-  useEffect(() => {
-    if (notificationsSupported() && Notification.permission === 'default') {
-      setShowPermModal(true);
-    }
-  }, []);
+  const notifPermission = getNotificationPermission();
 
   const fireReminder = (r: Reminder) => {
     sendNotification(r.name, reminderBody(r));
@@ -160,11 +150,6 @@ export default function Reminders({
     setReminders(prev => prev.filter(r => r.id !== id));
   };
 
-  const allowNotifications = async () => {
-    setShowPermModal(false);
-    await requestNotificationPermission();
-  };
-
   const dismissFiredModal = () => setFiredReminder(null);
 
   const now = Date.now();
@@ -175,6 +160,13 @@ export default function Reminders({
         <Bell size={28} weight="fill" />
         Напоминания
       </h2>
+
+      {notifPermission === 'denied' && (
+        <div className="rem-notif-hint">
+          🔕 Браузерные уведомления отключены — напоминания будут показываться только внутри
+          приложения. Разреши их в настройках браузера, чтобы получать уведомления на устройство.
+        </div>
+      )}
 
       <div className="reminders-layout">
         <section className="reminders-section">
@@ -367,32 +359,6 @@ export default function Reminders({
       </div>
 
       <AnimatePresence>
-        {showPermModal && (
-          <motion.div className="alert-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <motion.div
-              className="alert-card"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
-            >
-              <span className="alert-icon">🔔</span>
-              <h3>Показывать уведомления?</h3>
-              <p>
-                Разреши трекеру присылать уведомления на устройство — тогда ты точно не
-                пропустишь свои напоминания 💌
-              </p>
-              <div className="alert-actions">
-                <button className="alert-btn primary" onClick={allowNotifications}>
-                  Разрешить
-                </button>
-                <button className="alert-btn secondary" onClick={() => setShowPermModal(false)}>
-                  Не сейчас
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-
         {firedReminder && (
           <motion.div
             className="alert-overlay"
