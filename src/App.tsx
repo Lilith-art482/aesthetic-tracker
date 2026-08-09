@@ -7,8 +7,7 @@ import {
   ForkKnife,
   BookOpen,
   Barbell,
-  Bell,
-  UserCircle
+  Bell
 } from '@phosphor-icons/react';
 import type { Emotion, Tab } from './types';
 import { useSynced } from './hooks/useSynced';
@@ -64,6 +63,11 @@ function AppInner() {
   const [showEyeAlert, setShowEyeAlert] = useState(false);
   const [showNotifPrompt, setShowNotifPrompt] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ water: '', eye: '' });
+  const [profileAvatar] = useSynced<string>('profile_avatar', '');
+  const [profileName] = useSynced<string>('profile_name', '');
+  const profileInitial = (
+    (profileName || user?.displayName || user?.email || 'П')[0] || 'П'
+  ).toUpperCase();
 
   const idleTimerRef = useRef<number | undefined>(undefined);
   const lastActivityRef = useRef(Date.now());
@@ -259,7 +263,6 @@ function AppInner() {
     { id: 'recipes', label: 'Рецепты', icon: <BookOpen size={22} weight="fill" /> },
     { id: 'sport', label: 'Спорт', icon: <Barbell size={22} weight="fill" /> },
     { id: 'reminders', label: 'Напоминания', icon: <Bell size={22} weight="fill" /> },
-    { id: 'profile', label: 'Профиль', icon: <UserCircle size={22} weight="fill" /> },
   ];
 
   return (
@@ -283,6 +286,14 @@ function AppInner() {
       <div className="lofi-corner">
         <LofiPlayer />
       </div>
+
+      <button
+        className={`avatar-btn ${activeTab === 'profile' ? 'active' : ''}`}
+        onClick={() => handleTabChange('profile')}
+        title="Мой профиль"
+      >
+        {profileAvatar ? <img src={profileAvatar} alt="Аватар" /> : <span>{profileInitial}</span>}
+      </button>
 
       <button
         className="theme-toggle"

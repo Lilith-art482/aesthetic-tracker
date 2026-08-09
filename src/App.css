@@ -60,6 +60,44 @@
   z-index: 800;
 }
 
+.avatar-btn {
+  position: fixed;
+  top: 1rem;
+  right: calc(1rem + 108px);
+  z-index: 900;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid var(--glass-border);
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  color: var(--text-primary);
+  font-size: 1.15rem;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px var(--shadow);
+  transition: all 0.2s;
+  overflow: hidden;
+  padding: 0;
+}
+
+.avatar-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-btn:hover {
+  transform: scale(1.08);
+}
+
+.avatar-btn.active {
+  box-shadow: 0 0 0 3px var(--accent), 0 8px 24px var(--shadow);
+}
+
 .app-nav {
   display: flex;
   justify-content: flex-start;
@@ -455,6 +493,13 @@
     right: calc(0.5rem + 48px);
     height: 40px;
     padding: 0 12px;
+  }
+  .avatar-btn {
+    top: 0.5rem;
+    right: calc(0.5rem + 96px);
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
   .theme-toggle-text {
     display: none;
