@@ -7,7 +7,8 @@ import {
   ForkKnife,
   BookOpen,
   Barbell,
-  Bell
+  Bell,
+  UserCircle
 } from '@phosphor-icons/react';
 import type { Emotion, Tab } from './types';
 import { useSynced } from './hooks/useSynced';
@@ -48,7 +49,6 @@ function AppInner() {
   const [robotEmotion, setRobotEmotion] = useState<Emotion>('neutral');
   const [robotSpeech, setRobotSpeech] = useState<string | undefined>();
   const [showTutorial, setShowTutorial] = useSynced('tutorial_done', true);
-  const [showProfile, setShowProfile] = useState(false);
   const [isDark, setIsDark] = useState(() => {
     try {
       return localStorage.getItem('theme') === 'dark';
@@ -259,6 +259,7 @@ function AppInner() {
     { id: 'recipes', label: 'Рецепты', icon: <BookOpen size={22} weight="fill" /> },
     { id: 'sport', label: 'Спорт', icon: <Barbell size={22} weight="fill" /> },
     { id: 'reminders', label: 'Напоминания', icon: <Bell size={22} weight="fill" /> },
+    { id: 'profile', label: 'Профиль', icon: <UserCircle size={22} weight="fill" /> },
   ];
 
   return (
@@ -290,14 +291,6 @@ function AppInner() {
       >
         <span>{isDark ? '☀️' : '🌙'}</span>
         <span className="theme-toggle-text">{isDark ? 'Светлая тема' : 'Тёмная тема'}</span>
-      </button>
-
-      <button
-        className="profile-btn"
-        onClick={() => setShowProfile(true)}
-        title="Мой профиль"
-      >
-        {(user.email?.[0] || 'П').toUpperCase()}
       </button>
 
       <nav className="app-nav">
@@ -354,6 +347,7 @@ function AppInner() {
                     onDismissEye={dismissEye}
                   />
                 )}
+                {activeTab === 'profile' && <Profile user={user} onLogout={logout} />}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -367,16 +361,6 @@ function AppInner() {
           </aside>
         </div>
       </main>
-
-      <AnimatePresence>
-        {showProfile && (
-          <Profile
-            user={user}
-            onBack={() => setShowProfile(false)}
-            onLogout={logout}
-          />
-        )}
-      </AnimatePresence>
 
       <AnimatePresence>
         {showNotifPrompt && (
