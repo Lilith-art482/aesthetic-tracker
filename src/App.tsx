@@ -14,6 +14,7 @@ import { useSynced } from './hooks/useSynced';
 import { useAuth, AuthProvider } from './context/AuthContext';
 import AuthScreen from './components/AuthScreen';
 import RobotAssistant from './components/RobotAssistant';
+import Reminders from './components/Reminders';
 import Planner from './components/Planner';
 import Finances from './components/Finances';
 import Habits from './components/Habits';
@@ -25,18 +26,6 @@ import Tutorial from './components/Tutorial';
 import Profile from './components/Profile';
 import { DARK_PHRASES, LIGHT_PHRASES, pickPhrase, type PhraseMap } from './data/phrases';
 import './App.css';
-
-const WATER_INTERVALS = [
-  { label: '30 мин', value: 30 },
-  { label: '45 мин', value: 45 },
-  { label: '60 мин', value: 60 },
-];
-
-const EYE_INTERVALS = [
-  { label: '20 мин', value: 20 },
-  { label: '30 мин', value: 30 },
-  { label: '45 мин', value: 45 },
-];
 
 const IDLE_TIMEOUT = 120_000;
 
@@ -242,6 +231,7 @@ function AppInner() {
     { id: 'nutrition', label: 'Питание', icon: <ForkKnife size={22} weight="fill" /> },
     { id: 'recipes', label: 'Рецепты', icon: <BookOpen size={22} weight="fill" /> },
     { id: 'sport', label: 'Спорт', icon: <Barbell size={22} weight="fill" /> },
+    { id: 'reminders', label: 'Напоминания', icon: <Bell size={22} weight="fill" /> },
   ];
 
   return (
@@ -326,6 +316,17 @@ function AppInner() {
                 {activeTab === 'nutrition' && <Nutrition />}
                 {activeTab === 'recipes' && <Recipes />}
                 {activeTab === 'sport' && <Sport />}
+                {activeTab === 'reminders' && (
+                  <Reminders
+                    waterInterval={waterInterval}
+                    eyeInterval={eyeInterval}
+                    timeLeft={timeLeft}
+                    onStartWater={startWaterTimer}
+                    onStartEye={startEyeTimer}
+                    onDismissWater={dismissWater}
+                    onDismissEye={dismissEye}
+                  />
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -336,65 +337,6 @@ function AppInner() {
               speechText={robotSpeech}
               dark={isDark}
             />
-
-            <div className="reminder-section">
-              <h4 className="reminder-title">
-                <Bell size={16} weight="fill" />
-                Напоминания
-              </h4>
-
-              <div className="reminder-card">
-                <div className="reminder-header">
-                  <span>💧 Вода</span>
-                  {waterInterval && (
-                    <span className="reminder-time">{timeLeft.water}</span>
-                  )}
-                </div>
-                {!waterInterval ? (
-                  <div className="reminder-options">
-                    {WATER_INTERVALS.map(int => (
-                      <button
-                        key={int.value}
-                        className="reminder-btn"
-                        onClick={() => startWaterTimer(int.value)}
-                      >
-                        {int.label}
-                      </button>
-                    ))}
-                  </div>
-                ) : (
-                  <button className="reminder-stop" onClick={dismissWater}>
-                    Отключить
-                  </button>
-                )}
-              </div>
-
-              <div className="reminder-card">
-                <div className="reminder-header">
-                  <span>👁️ Разминка</span>
-                  {eyeInterval && (
-                    <span className="reminder-time">{timeLeft.eye}</span>
-                  )}
-                </div>
-                {!eyeInterval ? (
-                  <div className="reminder-options">
-                    {EYE_INTERVALS.map(int => (
-                      <button
-                        key={int.value}
-                        className="reminder-btn"
-                        onClick={() => startEyeTimer(int.value)}
-                      >
-                        {int.label}
-                      </button>
-                    ))}
-                  </div>
-                ) : (
-                  <button className="reminder-stop" onClick={dismissEye}>
-                    Отключить
-                  </button>
-                )}
-              </div>
-            </div>
           </aside>
         </div>
       </main>
